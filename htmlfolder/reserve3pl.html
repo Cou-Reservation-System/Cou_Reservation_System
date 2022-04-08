@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>예약페이지</title>
+    <link rel="stylesheet" href="reserveStyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
+  <body>
+    <header>
+      <a href="javascript:window.history.back();"
+        ><span class="arrow-prev"></span
+      ></a>
+      <h3 class="title">예약 등록하기</h3>
+    </header>
+    <main>
+      <form id="reserveForm">
+        <fieldset>
+          <legend>출발지</legend>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="김쿠쿠"
+            class="input"
+            maxlength="10"
+            required
+          />
+          <label for="name" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>비밀번호</legend>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="1234"
+            class="input"
+            maxlength="10"
+            required
+          />
+          <label for="password" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>차량번호</legend>
+          <input
+            id="carNumber"
+            name="carNumber"
+            type="text"
+            placeholder="10 쿠 1234"
+            pattern="[0-9]{2,3} [ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1} [0-9]{4}"
+            class="input"
+            required
+            maxlength="9"
+          />
+          <label for="carNumber" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>전화번호</legend>
+          <input
+            id="tel"
+            name="tel"
+            type="tel"
+            oninput="autoHyphen(this)"
+            pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
+            placeholder="010-1234-5678"
+            class="input"
+            required
+            maxlength="13"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>파레트 수량</legend>
+          <input
+            id="pallete"
+            name="pallete"
+            type="number"
+            placeholder="10"
+            class="input"
+            required
+            maxlength="number"
+            min="0"
+          />
+          <label for="pallete" class="label">개</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>차종</legend>
+          <select name="field4" class="select-field">
+            <option value="1t">1t</option>
+            <option value="2.5t">2.5t</option>
+            <option value="3.5t">3.5t</option>
+            <option value="5t">5t</option>
+            <option value="11t">11t</option>
+            <option value="컨테이너">컨테이너</option>
+          </select>
+          <label for="carWeight" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>날짜</legend>
+          <input
+            id="date"
+            name="date"
+            type="text"
+            placeholder="2022-04-03 (20:00)"
+            class="input"
+            required
+          />
+          <label for="date" class="label"></label>
+        </fieldset>
+
+        <button type="submit" class="submitButton">예약등록하기</button>
+      </form>
+    </main>
+    <script src="./regex.js"></script>
+    <script src="./addItem.js"></script>
+    <script src="./flatpickr.js"></script>
+  </body>
+</html>
