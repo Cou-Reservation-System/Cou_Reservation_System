@@ -12,9 +12,9 @@ function getClock() {
 const yoil = "일월화수목금토일";
 
 function getDate() {
-  todayDate.innerText = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일 ${
-    yoil[date.getDay()]
-  }요일`;
+  todayDate.innerText = `${date.getFullYear()}년 ${
+    date.getMonth() + 1
+  }월 ${date.getDate()}일 ${yoil[date.getDay()]}요일`;
 }
 
 getClock();
