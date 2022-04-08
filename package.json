@@ -1,5 +1,5 @@
 {
-  "name": "cou_reservation_system-",
+  "name": "cou_reservation_system",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -24,5 +24,13 @@
   },
   "devDependencies": {
     "prettier": "^2.6.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cou-Reservation-System/Cou_Reservation_System.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cou-Reservation-System/Cou_Reservation_System/issues"
+  },
+  "homepage": "https://github.com/Cou-Reservation-System/Cou_Reservation_System#readme"
 }
