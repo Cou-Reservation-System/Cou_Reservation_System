@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const { sequelize } = require("./models");
 const { Router } = require("express");
 
+
 // force: 서버 실행 시 마다 테이블을 재생성 할 것인지 아닌지
 sequelize
   .sync({ force: false })
