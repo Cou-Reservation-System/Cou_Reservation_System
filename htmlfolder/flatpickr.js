@@ -8,8 +8,8 @@ const reservedDate = [
 flatpickr("#date", {
   enableTime: true,
   minuteIncrement: 60,
-  minTime: "06:00",
-  maxTime: "00:00",
+  minTime: "09:00",
+  maxTime: "21:00",
   onChange: function (selectedDates, dateStr, instance) {
     if (reservedDate.includes(dateStr)) {
       alert(dateStr + "은 이미 예약된 시간입니다!");
