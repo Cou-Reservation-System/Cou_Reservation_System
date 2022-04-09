@@ -47,6 +47,11 @@ app.get("/", (req, res) => {
     res.render("main");
 });
 
+const reserveRouter = require("./routes/reserve");
+const adminRouter = require("./routes/admin");
+
+app.use("/reserve", [reserveRouter]);
+app.use("/admin", [adminRouter]);
 
 app.listen(port, () => {
     console.log(port, '포트로 서버가 켜졌습니다.');
