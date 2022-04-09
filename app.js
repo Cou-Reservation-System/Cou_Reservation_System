@@ -48,8 +48,14 @@ app.get("/admin", (req, res) => {
 });
 //root URL 접속시 reserve 렌더링
 app.get("/", (req, res) => {
-  res.render("reserve");
+  res.render("choose");
 });
+app.get("/coupangreserve", (req, res) => {
+  res.render("reserve");
+})
+app.get("/3plreserve", (req, res) => {
+  res.render("reserve3pl");
+})
 
 app.get('/adminReserve', (req, res) => {
     res.render('adminReserve');
