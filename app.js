@@ -47,6 +47,10 @@ app.get("/", (req, res) => {
     res.render("main");
 });
 
+app.get('/reserve', (req, res) => {
+    res.render('reserve');
+})
+
 const reserveRouter = require("./routes/reserve");
 const adminRouter = require("./routes/admin");
 
