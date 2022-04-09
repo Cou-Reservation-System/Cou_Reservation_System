@@ -1,0 +1,100 @@
+body{
+    background-color: rgb(231, 231, 231);
+}
+/* 타이틀 */
+.title1{
+    background-color: #3bb2e9;
+    margin: 0% auto 0% auto;
+    border: 1px solid lightgray;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    color: white;
+}
+.title2{
+    background-color: white;
+    margin: 0% auto 0% auto;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    color: #212529;
+}
+
+/* 로그인 메인 */
+.mainWrap{
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 560px;
+    padding: 30px;
+    text-align: center;
+    /* box-shadow: 0px 1px 3px 2px rgb(112 112 112); */
+    /* border-radius: 5px; */
+}
+#id{
+    margin: 100px 0 25px 0;
+    border: none;
+    border-bottom: 2px solid #545b62;
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+}
+#id:focus{
+    outline: none;    
+    /* outline: 1px solid #0c7dff2e;   */
+    /* background-color: #0c7dff2e;   */
+}
+#pass{
+    margin: 11px 0 72px 0;
+    border: none;
+    border-bottom: 2px solid #545b62;
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+}
+#pass:focus{
+    outline: none;    
+}
+
+/* 버튼 */
+.btnWrap{
+    position:absolute;
+    /* top:  */
+
+}
+#loginBtn{
+    position: absolute;
+    top: 200%;
+    left: 20%;
+    /* transform: translate(0%, -50%); */
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #9bc9ff;
+    background-color: #0065daf7;
+    color: white;
+}
+#loginBtn:active{
+    font-size:16x;
+}
+#joinBtn{
+    position: absolute;
+    top: 460%;
+    right: -303%;
+}
+#joinBtn:active{
+    font-size:16x;
+}
+#findPassBtn{
+    position: relative;
+    top: 112px;
+    left: 31px;
+}
+#findPassBtn:active{
+    font-size:16x;
+}
+
+
