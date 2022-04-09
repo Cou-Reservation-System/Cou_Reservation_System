@@ -1,3 +1,5 @@
+<!-- adminReserve.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +28,7 @@
 
     <!-- font -->
 
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/adminPage.css" />
 
     <title>관리자 페이지</title>
   </head>
@@ -35,26 +37,31 @@
   <body> <!-- 화면실행 Shift + Alt + B --> 
     <h3 class="title1">관리자 페이지</h3>
     <h5 class="title2">관리자 페이지</h5>
-      <!-- <div class="btn_wrap"> -->
-        <button onclik="getDate()" id="date_btn" type="button">날짜 조회</button>
-        <button onclik="getCar()" id="car_btn" type="button">차량 조회</button>
-      <!-- </div> -->
-        <body>
+      <div class="btn_wrap">
+        <button onclik="getDate()" class="date_btn" id="date_btn" type="button">날짜 조회</button>
+        <button onclik="getCar()" class="car_btn" id="car_btn" type="button">차량 조회</button>
+      </div>
+        <!-- <body> -->
+          <!-- <main> -->
           <div>
+          <div class="table_one">
             <table class="table table-bordered">
               <thead>
-                <tr>
-                  <th scope="col">센터</th>
-                  <th scope="col">여주 쿠팡</th>
+                <tr class="d-flex">
+                  <th class="center">센터</th>
+                  <th class="centerName">여주 쿠팡</th>
                 </tr>
-                <tr>
-                  <th scope="col">날짜 선택</th>
-                  <th scope="col"> <input type="text" id="start" class="form-control text-left mr-2"> <label class="ml-3 form-control-placeholder" id="start-p" for="start"> ~ </label> <span class="fa fa-calendar" id="fa-1"></span> <input type="text" id="end" class="form-control text-left ml-2"> <label class="ml-3 form-control-placeholder" id="end-p" for="end"></label> <span class="fa fa-calendar" id="fa-2"></span> </th>    
+                <tr class="d-flex">
+                  <th class="center">날짜 선택</th>
+                  <th class="centerName"> <div class="input-group input-daterange"> <input type="text" class="form-control input1" placeholder="시작 날짜" readonly> ~ <input type="text" class="form-control input2" placeholder="종료 날짜" readonly> </div>
+                  </th>    
                 </tr>
               </thead>
             </table>            
           </div>
-            <div>
+          <!-- </div> -->
+          <!-- </main> -->
+            <div class="table_two">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -65,14 +72,14 @@
                             <th scope="col">출발지</th>
                             <th scope="col">전화번호</th>
                             <th scope="col">수량(파레트)</th>
-
                         </tr>
                     </thead>
                 </table>
             </div>
-        </body>
+            </div>
+        <!-- </body> -->
     
     <!-- Scripts  -->
-    <script src="/js/"></script>
+    <!-- <script src="/js/"></script> -->
   </body>
 </html>

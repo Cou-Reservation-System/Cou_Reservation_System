@@ -61,6 +61,22 @@ app.get('/adminReserve', (req, res) => {
     res.render('adminReserve');
 })
 
+///admin URL 접속시 login 렌더링
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+//관리자 회원가입
+app.get("/join", (req, res) => {
+  res.render("join");
+}); 
+
+//관리자 비밀번호 찾기
+app.get("/findPass", (req, res) => {
+  res.render("findPass");
+});
+
+
 const reserveRouter = require("./routes/reserve");
 const adminRouter = require("./routes/admin");
 
