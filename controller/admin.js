@@ -148,7 +148,7 @@ module.exports.resetPassword = async (req, res) => {
 
     // 원래있던 비밀번호
     const admin = await Admin.findOne({ where: { id } });
-    const originHashpassword = admin.password;
+    const originHashPassword = admin.password;
     const originSalt = admin.salt; 
 
     // 새로 저장할 비밀번호
@@ -159,7 +159,7 @@ module.exports.resetPassword = async (req, res) => {
 
     await Admin.update(
       { password: newHashPassword },
-      { where: { password: originHashpassword } }
+      { where: { password: originHashPassword } }
     );
     await Admin.update({ salt: newSalt }, { where: { salt: originSalt } });
 
