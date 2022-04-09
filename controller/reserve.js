@@ -26,6 +26,7 @@ module.exports.reserve = async (req, res) => {
       isDone,
     };
 
+    // 쿠팡 예약 등록
     if (type === "coupang") {
 
       const alreadyReserve = await Coupang.findOne({ where: { carNumber } });
@@ -39,7 +40,8 @@ module.exports.reserve = async (req, res) => {
       }
 
       await Coupang.create(createInfo);
-    } else {
+    } // 3PL 예약 등록 
+    else {
 
       const alreadyReserve = await TPL.findOne({ where: { carNumber } });
 
