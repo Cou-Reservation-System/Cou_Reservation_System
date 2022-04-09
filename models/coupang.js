@@ -1,6 +1,6 @@
-"use strict";
-const Sequelize = require("sequelize");
-const { Model } = require("sequelize");
+'use strict';
+const Sequelize = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Coupang extends Model {
@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       departure: {
         allowNull: false,
         type: Sequelize.STRING(20),
+      },
+
+      password: {
+        allowNull: false,
+        type: Sequelize.STRING(30),
       },
 
       carNumber: {
@@ -52,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       timestamps: true,
-      modelName: "Coupang",
+      modelName: 'Coupang',
     }
   );
   return Coupang;
