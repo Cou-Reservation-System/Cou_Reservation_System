@@ -25,11 +25,9 @@
     <link rel="stylesheet" href="./css/findPass.css" />
 
     <script>
-      function findPassBtn() {
-        window.location.replace("")
-      };
-     
-
+      $(document).ready(function (){
+        findPassSetting()
+      })
 
     </script>
 
@@ -43,17 +41,6 @@
     <h3 class="title1">비밀번호 찾기</h3>
     <h5 class="title2">비밀번호 찾기</h5>
     <div class="mainWrap" id="mainWrap">
-      <div class="inputWrap" id="inputWrap">
-        <div class="id">
-          <input id="id" type="text" placeholder="아이디" />
-        </div>
-        <div class="email">
-          <input id="email" type="text" placeholder="EMAIL" />
-        </div>
-      </div>
-      <div class="btnWrap">
-        <button onclick="findPass()" id="findPassBtn" type="button">입력하기</button>
-      </div>
     </div>
 
     <!-- Scripts  -->
