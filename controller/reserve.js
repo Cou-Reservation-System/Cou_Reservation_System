@@ -29,6 +29,7 @@ module.exports.reserve = async (req, res) => {
     if (type === "coupang") {
 
       const alreadyReserve = await Coupang.findOne({ where: { carNumber } });
+
       if (alreadyReserve) {
         return res.json({
           ok: false,
@@ -54,8 +55,8 @@ module.exports.reserve = async (req, res) => {
     }
 
     res.status(201).json({ ok: true, message: "예약이 성공적으로 완료되었습니다." });
-  } catch (error) {
-    res.status(400).json({ ok: false, errorMessage: "예약에 실패하였습니다." });
-    console.error(`${error}로 인해 예약에 실패하였습니다. `);
+  } catch (err) {
+    res.status(400).json({ ok: false, errorMessage: "예약을 실패하였습니다." });
+    console.error(`${err}로 인해 예약을 실패하였습니다. `);
   }
 };
