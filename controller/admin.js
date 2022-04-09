@@ -39,9 +39,6 @@ module.exports.join = async (req, res) => {
       .pbkdf2Sync(password, salt, 100000, 64, 'sha512')
       .toString('base64');
 
-    console.log('솔트는', salt);
-    console.log('해쉬비번은', hashPassword);
-
     await Admin.create({ id, email, password: hashPassword, salt });
 
     res.status(201).json({ ok: true, message: '회원가입이 완료되었습니다.' });
