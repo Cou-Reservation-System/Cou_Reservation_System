@@ -58,7 +58,7 @@ app.get('/adminReserve', (req, res) => {
 const reserveRouter = require("./routes/reserve");
 const adminRouter = require("./routes/admin");
 
-app.use("/reserve", [reserveRouter]);
+app.use("/reservation", [reserveRouter]);
 app.use("/admin", [adminRouter]);
 
 app.listen(port, () => {
