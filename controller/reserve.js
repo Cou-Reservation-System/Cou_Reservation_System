@@ -50,6 +50,7 @@ module.exports.reserve = async (req, res) => {
             "이미 예약한 내역이 있습니다. 반품이 완료된 후에 다시 예약을 등록해주세요.",
         });
       }
+      await TPL.create(createInfo);
     }
 
     res.json({ ok: true, message: "예약이 성공적으로 완료되었습니다." });
