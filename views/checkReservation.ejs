@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>수정/삭제하기</title>
+    <link rel="stylesheet" href="./css/chooseStyles.css" />
+  </head>
+  <body>
+    <header>
+      <a href="javascript:window.history.back();"
+        ><span class="arrow-prev"></span
+      ></a>
+      <h3 class="title">수정/삭제하기</h3>
+    </header>
+    <main>
+      <form id="reserveForm">
+        <fieldset>
+          <legend>출발지</legend>
+          <input
+            id="name"
+            type="text"
+            placeholder="김쿠쿠"
+            class="input"
+            maxlength="10"
+            required
+          />
+          <label for="name" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>비밀번호</legend>
+          <input
+            id="password"
+            type="password"
+            placeholder="1234"
+            class="input"
+            required
+          />
+          <label for="password" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>차량번호</legend>
+          <input
+            id="carNumber"
+            type="text"
+            placeholder="10 쿠 1234"
+            class="input"
+            required
+            maxlength="9"
+          />
+          <label for="carNumber" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>전화번호</legend>
+          <input
+            id="tel"
+            type="number"
+            placeholder="010-1234-5678"
+            class="input"
+            required
+            maxlength="13"
+          />
+        </fieldset>
+
+        <fieldset id="pallete-field">
+          <legend>파레트 수량</legend>
+          <input
+            id="pallete"
+            name="pallete"
+            type="number"
+            placeholder="10"
+            class="input"
+            required
+            maxlength="number"
+            min="0"
+          />
+          <label for="pallete" class="label">개</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>차종</legend>
+          <select class="select-field" name="carWeight">
+            <option value="1t">1t</option>
+            <option value="2.5t">2.5t</option>
+            <option value="3.5t">3.5t</option>
+            <option value="5t">5t</option>
+            <option value="11t">11t</option>
+            <option value="컨테이너">컨테이너</option>
+          </select>
+          <label for="carWeight" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>상차/하차</legend>
+          <select class="select-field">
+            <option value="up">상차</option>
+            <option value="down">하차</option>
+          </select>
+          <label for="upDown" class="label"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>날짜</legend>
+          <input
+            id="date"
+            name="date"
+            type="text"
+            placeholder="2022-04-03 (20:00)"
+            class="input"
+            required
+          />
+          <label for="date" class="label"></label>
+        </fieldset>
+
+        <button type="submit" class="editButton" id="edit">수정하기</button>
+        <button type="submit" class="deleteButton" id="delete">삭제하기</button>
+      </form>
+    </main>
+  </body>
+</html>

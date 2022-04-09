@@ -1,0 +1,31 @@
+<!-- main.html -->
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>예약페이지</title>
+    <link rel="stylesheet" href="./css/chooseStyles.css" />
+  </head>
+  <body>
+    <header>
+      <h3 class="title">회사 선택</h3>
+    </header>
+    <main>
+      <p id="guide">일반과 3PL 중 선택해주세요</p>
+
+      <h4 id="todayDate">0000년 00월 00일 0요일</h4>
+      <h2 id="clock">00:00</h2>
+
+      <a href="./reserve.html" class="Button" id="general">일반</a><br />
+      <a href="./reserve3pl.html" class="Button" id="threepl">3PL</a>
+
+      <br /><br /><br />
+      <a href="./editDelete.html" class="Button" id="editDelete"
+        >예약 수정/삭제하기</a
+      >
+    </main>
+    <script src="./js/clock.js"></script>
+  </body>
+</html>

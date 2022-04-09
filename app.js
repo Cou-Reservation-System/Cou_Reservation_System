@@ -42,9 +42,13 @@ app.set('view engine', 'ejs');
 //정적파일 사용
 app.use(express.static("./views"));
 
-//root URL 접속시 main 렌더링
-app.get("/", (req, res) => {
+///admin URL 접속시 main 렌더링
+app.get("/admin", (req, res) => {
     res.render("main");
+});
+//root URL 접속시 reserve 렌더링
+app.get("/", (req, res) => {
+  res.render("reserve");
 });
 
 const reserveRouter = require("./routes/reserve");
