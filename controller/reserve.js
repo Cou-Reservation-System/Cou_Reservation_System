@@ -15,7 +15,6 @@ module.exports.reserve = async (req, res) => {
 
     const isDone = false;
 
-    // 비밀번호 추가
     createInfo = {
       departure,
       password,
@@ -54,9 +53,9 @@ module.exports.reserve = async (req, res) => {
       await TPL.create(createInfo);
     }
 
-    res.json({ ok: true, message: "예약이 성공적으로 완료되었습니다." });
+    res.status(201).json({ ok: true, message: "예약이 성공적으로 완료되었습니다." });
   } catch (error) {
-    res.json({ ok: false, errorMessage: "예약에 실패하였습니다." });
+    res.status(400).json({ ok: false, errorMessage: "예약에 실패하였습니다." });
     console.error(`${error}로 인해 예약에 실패하였습니다. `);
   }
 };
