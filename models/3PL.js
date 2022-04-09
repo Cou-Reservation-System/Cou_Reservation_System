@@ -20,9 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         type: Sequelize.STRING(20),
       },
 
+      password: {
+        allowNull: false,
+        type: Sequelize.STRING(30),
+      },
+
       carNumber: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(13),
       },
 
       phoneNumber: {
