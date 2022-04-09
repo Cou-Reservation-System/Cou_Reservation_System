@@ -11,9 +11,9 @@ body {
   background-color: rgb(231, 231, 231);
 }
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 .title1{
     background-color: #1ebbde;
@@ -35,10 +35,51 @@ body {
 
 .center{
   width: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .centerName{
   width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.date_btn{
+  width: 40%;
+}
+
+.car_btn{
+  width: 40%;
+}
+
+.btn_wrap{
+  display: flex;
+  width: 50%;
+  min-width: 400px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 10%;
+  margin: 0 auto;
+}
+
+.table_one{
+  width: 100%;
+  display: flex;
+  margin-top: 30px;
+}
+
+.table_two{
+  display: flex;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.test{
+  display: flex;
 }
 
 .arrow-prev {
