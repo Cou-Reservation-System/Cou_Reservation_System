@@ -34,12 +34,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(requestMiddleware);
 app.use(cors());
 
-const reserveRouter = require("./routes/reserve");
-const adminRouter = require("./routes/admin");
+//ejs view
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
-app.use("/reserve", [reserveRouter]);
-app.use("/admin", [adminRouter]);
+//정적파일 사용
+app.use(express.static("./views"));
+
+//root URL 접속시 main 렌더링
+app.get("/", (req, res) => {
+    res.render("main");
+});
+
 
 app.listen(port, () => {
-  console.log(port, "포트로 서버가 켜졌습니다.");
-});
+    console.log(port, '포트로 서버가 켜졌습니다.');
+  });

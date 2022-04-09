@@ -1,0 +1,95 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h3.title {
+  min-width: 320px;
+  padding: 1.2rem 0 1rem;
+  margin: 0;
+  text-align: center;
+  background: #3bb2e9;
+  color: #ffffff;
+  height: 4rem;
+  font-family: "Pretendard";
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+p {
+  align-self: flex-start;
+  margin: 0;
+  color: #8b8b8b;
+}
+
+h4 #date {
+  margin-top: 10rem;
+  color: #4d4d4d;
+}
+
+h2 {
+  margin-top: -0.5rem;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3.4rem 2rem;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+#general {
+  margin-top: 0.5rem;
+  height: 8rem;
+  min-width: 8rem;
+  top: 8rem;
+  margin: 1 1 1 0.6rem;
+  background: #5bb7c3;
+  border-radius: 10rem;
+}
+
+#threepl {
+  margin-top: 0.5rem;
+  height: 8rem;
+  min-width: 8rem;
+  top: 17rem;
+  background: #da8344;
+  border-radius: 10rem;
+}
+
+#editDelete {
+  background: #17739d;
+  top: 30rem;
+  height: 3rem;
+  min-width: 20rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+#editDelete:hover {
+  background: rgb(0, 65, 98);
+}

@@ -1,10 +1,11 @@
 {
-  "name": "cou_reservation_system-",
+  "name": "cou_reservation_system",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
   "keywords": [],
   "author": "",
@@ -12,14 +13,24 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.3",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "prettier": "^2.6.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cou-Reservation-System/Cou_Reservation_System.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cou-Reservation-System/Cou_Reservation_System/issues"
+  },
+  "homepage": "https://github.com/Cou-Reservation-System/Cou_Reservation_System#readme"
 }
