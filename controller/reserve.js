@@ -15,7 +15,6 @@ module.exports.reserve = async (req, res) => {
 
     const isDone = false;
 
-    // 비밀번호 추가
     createInfo = {
       departure,
       password,
