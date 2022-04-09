@@ -5,6 +5,7 @@ module.exports.reserve = async (req, res) => {
     const {
       type,
       departure,
+      password,
       carNumber,
       phoneNumber,
       amountPallet,
@@ -17,6 +18,7 @@ module.exports.reserve = async (req, res) => {
     // 비밀번호 추가
     createInfo = {
       departure,
+      password,
       carNumber,
       phoneNumber,
       amountPallet,
@@ -26,7 +28,6 @@ module.exports.reserve = async (req, res) => {
     };
 
     if (type === "coupang") {
-      console.log("coupang 입니다.");
 
       const alreadyReserve = await Coupang.findOne({ where: { carNumber } });
       if (alreadyReserve) {
@@ -39,10 +40,9 @@ module.exports.reserve = async (req, res) => {
 
       await Coupang.create(createInfo);
     } else {
-      console.log("3PL 입니다.");
-      await TPL.create(createInfo);
 
       const alreadyReserve = await TPL.findOne({ where: { carNumber } });
+
       if (alreadyReserve) {
         return res.json({
           ok: false,
@@ -50,6 +50,7 @@ module.exports.reserve = async (req, res) => {
             "이미 예약한 내역이 있습니다. 반품이 완료된 후에 다시 예약을 등록해주세요.",
         });
       }
+
       await TPL.create(createInfo);
     }
 
