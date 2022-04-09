@@ -11,6 +11,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   </head>
   <body>
@@ -25,10 +28,10 @@
         <fieldset>
           <legend>출발지</legend>
           <input
-            id="name"
-            name="name"
+            id="departure"
+            name="departure"
             type="text"
-            placeholder="김쿠쿠"
+            placeholder="출발지"
             class="input"
             maxlength="10"
             required
@@ -42,7 +45,7 @@
             id="password"
             name="password"
             type="password"
-            placeholder="1234"
+            placeholder="비밀번호"
             class="input"
             maxlength="10"
             required
@@ -56,7 +59,7 @@
             id="carNumber"
             name="carNumber"
             type="text"
-            placeholder="10 쿠 1234"
+            placeholder="예)10가 1234"
             pattern="[0-9]{2,3} [ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1} [0-9]{4}"
             class="input"
             required
@@ -68,8 +71,8 @@
         <fieldset>
           <legend>전화번호</legend>
           <input
-            id="tel"
-            name="tel"
+            id="phoneNumber"
+            name="phoneNumber"
             type="tel"
             oninput="autoHyphen(this)"
             pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
@@ -83,8 +86,8 @@
         <fieldset id="pallete-field">
           <legend>파레트 수량</legend>
           <input
-            id="pallete"
-            name="pallete"
+            id="amountPallet"
+            name="amountPallet"
             type="number"
             placeholder="10"
             class="input"
@@ -97,7 +100,7 @@
 
         <fieldset>
           <legend>차종</legend>
-          <select class="select-field" name="carWeight">
+          <select class="select-field" id="carType" name="carType">
             <option value="1t">1t</option>
             <option value="2.5t">2.5t</option>
             <option value="3.5t">3.5t</option>
@@ -105,7 +108,7 @@
             <option value="11t">11t</option>
             <option value="컨테이너">컨테이너</option>
           </select>
-          <label for="carWeight" class="label"></label>
+          <label for="carType" class="label"></label>
         </fieldset>
 
         <fieldset>
@@ -130,11 +133,42 @@
           <label for="date" class="label"></label>
         </fieldset>
 
-        <button type="submit" class="submitButton">예약등록하기</button>
+        <button type="button" class="submitButton" onclick="reserveBtn()">예약등록하기</button>
       </form>
     </main>
+
     <script src="./js/regex.js"></script>
-    <script src="./js/addItem.js"></script>
+    <!-- <script src="./js/addItem.js"></script> -->
     <script src="./js/flatpickr.js"></script>
+    <script>
+      // const api = 'reserve'
+
+    function reserveBtn() {
+        console.log('start coupang reserve')
+        
+        $.ajax({
+            type: "POST",
+            url: "http://3.37.129.143"+"/reservation",
+            data: {
+                type: 'coupang',
+                departure: $('#departure').val(),
+                password: $('#password').val(),
+                carNumber: $('#carNumber').val(),
+                phoneNumber: $('#phoneNumber').val(), 
+                amountPallet: $('#amountPallet').val(), 
+                carType: $('#carType').val(), 
+                DateAndTime: $('#date').val(),
+            },
+            success: function (response) {
+              console.log('예약 완료')
+                alert("예약 완료")
+                window.location.href("/admin");
+            },
+            error: function (error) {
+                alert(error.responseJSON.errorMessage);
+            },
+        });
+    }
+</script>
   </body>
 </html>
