@@ -30,7 +30,7 @@ module.exports.authMiddleware = async (req, res, next) => {
 
     res.status(400).json({
       ok: false,
-      errorMessage: '로그인 확인에 실패하였습니다.',
+      errorMessage: '로그인 확인을 실패하였습니다.',
     });
   }
 };

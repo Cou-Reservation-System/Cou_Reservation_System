@@ -11,6 +11,7 @@ const joinSchema = Joi.object({
   confirmPassword: Joi.string().min(4).required(),
 });
 
+// 회원가입
 module.exports.join = async (req, res) => {
   try {
     const { id, email, password, confirmPassword } =
@@ -43,7 +44,7 @@ module.exports.join = async (req, res) => {
 
     await Admin.create({ id, email, password: hashPassword, salt });
 
-    res.json({ ok: true, message: '회원가입이 완료되었습니다.' });
+    res.status(201).json({ ok: true, message: '회원가입이 완료되었습니다.' });
   } catch (err) {
     console.error(`${err}로 인해 회원가입에 실패하였습니다.`);
     res.status(400).json({
@@ -53,11 +54,16 @@ module.exports.join = async (req, res) => {
   }
 };
 
+// 로그인 Joi
+const loginSchema = Joi.object({
+  id: Joi.string().min(3).required(),
+  password: Joi.string().min(4).required(),
+})
+
+// 로그인
 module.exports.login = async (req, res) => {
   try {
-    const { id, password } = req.body;
-
-    console.log(id, password);
+    const { id, password } = await loginSchema.validateAsync(req.body);
 
     const admin = await Admin.findOne({ where: { id } });
 
@@ -95,6 +101,7 @@ module.exports.login = async (req, res) => {
   }
 };
 
+// 로그인 확인
 module.exports.auth = async (req, res) => {
   try {
     const admin = res.locals.admin;
