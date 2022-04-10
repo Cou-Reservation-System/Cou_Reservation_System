@@ -31,7 +31,7 @@ async function checkEveryReservation(req, res) {
 
 async function checkDailyReservation(req, res) {
   try {
-    const date = req.qu         ery.date
+    const date = req.query.date
     const reservedList = await sequelize.query(`select * from coupangs where \'dateAndTime\' = ${date} union all select * from 3pl where \'dateAndTime\' = ${date}` , {
     })
     res.status(200).json({
