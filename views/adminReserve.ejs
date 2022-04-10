@@ -1,0 +1,85 @@
+<!-- adminReserve.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- jQuery, Popper, Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- font -->
+
+    <link rel="stylesheet" href="./css/adminPage.css" />
+
+    <title>관리자 페이지</title>
+  </head>
+  <style></style>
+
+  <body> <!-- 화면실행 Shift + Alt + B --> 
+    <h3 class="title1">관리자 페이지</h3>
+    <h5 class="title2">관리자 페이지</h5>
+      <div class="btn_wrap">
+        <button onclik="getDate()" class="date_btn" id="date_btn" type="button">날짜 조회</button>
+        <button onclik="getCar()" class="car_btn" id="car_btn" type="button">차량 조회</button>
+      </div>
+        <!-- <body> -->
+          <!-- <main> -->
+          <div>
+          <div class="table_one">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="d-flex">
+                  <th class="center">센터</th>
+                  <th class="centerName">여주 쿠팡</th>
+                </tr>
+                <tr class="d-flex">
+                  <th class="center">날짜 선택</th>
+                  <th class="centerName"> <div class="input-group input-daterange"> <input type="text" class="form-control input1" placeholder="시작 날짜" readonly> ~ <input type="text" class="form-control input2" placeholder="종료 날짜" readonly> </div>
+                  </th>    
+                </tr>
+              </thead>
+            </table>            
+          </div>
+          <!-- </div> -->
+          <!-- </main> -->
+            <div class="table_two">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">날짜</th>
+                            <th scope="col">시간</th>
+                            <th scope="col">차량번호</th>
+                            <th scope="col">차종</th>
+                            <th scope="col">출발지</th>
+                            <th scope="col">전화번호</th>
+                            <th scope="col">수량(파레트)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            </div>
+        <!-- </body> -->
+    
+    <!-- Scripts  -->
+    <!-- <script src="/js/"></script> -->
+  </body>
+</html>

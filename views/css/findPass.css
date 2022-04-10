@@ -3,7 +3,7 @@ body{
 }
 /* 타이틀 */
 .title1{
-    background-color: #1ebbde;
+    background-color: #3bb2e9;
     margin: 0% auto 0% auto;
     border: 1px solid lightgray;
     width: 100%;
@@ -21,7 +21,7 @@ body{
 }
 
 /* 로그인 메인 */
-.login_wrap{
+.mainWrap{
     background-color: white;
     position: absolute;
     left: 50%;
@@ -34,7 +34,7 @@ body{
     /* box-shadow: 0px 1px 3px 2px rgb(112 112 112); */
     /* border-radius: 5px; */
 }
-#id_input{
+#id{
     margin: 100px 0 25px 0;
     border: none;
     border-bottom: 2px solid #545b62;
@@ -42,12 +42,12 @@ body{
     width: 400px;
     font-size: 20px;
 }
-#id_input:focus{
+#id:focus{
     outline: none;    
     /* outline: 1px solid #0c7dff2e;   */
     /* background-color: #0c7dff2e;   */
 }
-#pass_input{
+#email{
     margin: 11px 0 72px 0;
     border: none;
     border-bottom: 2px solid #545b62;
@@ -55,21 +55,53 @@ body{
     width: 400px;
     font-size: 20px;
 }
-#pass_input:focus{
+#email:focus{
+    outline: none;    
+}
+
+#newPass{
+    margin: 100px 0 25px 0;
+    border: none;
+    border-bottom: 2px solid #545b62;
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+}
+#newPass:focus{
+    outline: none;    
+    /* outline: 1px solid #0c7dff2e;   */
+    /* background-color: #0c7dff2e;   */
+}
+#newPassCon{
+    margin: 11px 0 72px 0;
+    border: none;
+    border-bottom: 2px solid #545b62;
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+}
+#newPassCon:focus{
     outline: none;    
 }
 
 /* 버튼 */
-.btn_wrap{
+.btnWrap{
     position:absolute;
     /* top:  */
 
 }
-#login_btn{
+
+.btnWrap2{
+    position:absolute;
+    /* top:  */
+
+}
+
+#findPassBtn{
     position: absolute;
-    top: 200%;
+    top: 203%;
     left: 20%;
-    /* transform: translate(0%, -50%); */
+    transform: translate(5%, 96%);
     width: 400px;
     height: 50px;
     border-radius: 5px;
@@ -77,24 +109,22 @@ body{
     background-color: #0065daf7;
     color: white;
 }
-#login_btn:active{
+#findPassBtn:active{
     font-size:16x;
 }
-#join_btn{
+
+#changePassBtn{
     position: absolute;
-    top: 460%;
-    right: -303%;
+    top: 203%;
+    left: 20%;
+    transform: translate(5%, 96%);
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #9bc9ff;
+    background-color: #0065daf7;
+    color: white;
 }
-#join_btn:active{
+#changePassBtn:active{
     font-size:16x;
 }
-#findPass_btn{
-    position: relative;
-    top: 112px;
-    left: 31px;
-}
-#findPass_btn:active{
-    font-size:16x;
-}
-
-

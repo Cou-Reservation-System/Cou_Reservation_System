@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>예약페이지</title>
     <link rel="stylesheet" href="./css/chooseStyles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
     <header>
@@ -18,8 +19,8 @@
       <h4 id="todayDate">0000년 00월 00일 0요일</h4>
       <h2 id="clock">00:00</h2>
 
-      <a href="./reserve.html" class="Button" id="general">일반</a><br />
-      <a href="./reserve3pl.html" class="Button" id="threepl">3PL</a>
+      <a href="/coupangreserve" class="Button" id="general">일반</a><br />
+      <a href="/3plreserve" class="Button" id="threepl">3PL</a>
 
       <br /><br /><br />
       <a href="./editDelete.html" class="Button" id="editDelete"
@@ -27,5 +28,37 @@
       >
     </main>
     <script src="./js/clock.js"></script>
+
+    <!-- <script>
+        // const api = 'reserve'
+
+      function test() {
+          console.log('start reserve')
+          const departure = $('#name').val()
+
+          console.log('departure',departure)
+          $.ajax({
+              type: "POST",
+              url: "/reserve",
+              data: {
+                  type: 'coupang',
+                  departure: departure,
+                  password: $('#password').val(),
+                  carNumber: $('#carNumber').val(),
+                  phoneNumber: $('#phoneNumber').val(), 
+                  amountPallet: $('#amountPallet').val(), 
+                  carType: $('#carType').val(), 
+                  DateAndTime: $('#DateAndTime').val(),
+              },
+              success: function (response) {
+                  alert("예약 완료")
+                  // window.location.replace("/");
+              },
+              error: function (error) {
+                  alert(error.responseJSON.errorMessage);
+              },
+          });
+      }
+  </script> -->
   </body>
 </html>

@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   </head>
   <body>
@@ -23,8 +24,8 @@
         <fieldset>
           <legend>출발지</legend>
           <input
-            id="name"
-            name="name"
+            id="departure"
+            name="departure"
             type="text"
             placeholder="김쿠쿠"
             class="input"
@@ -66,8 +67,8 @@
         <fieldset>
           <legend>전화번호</legend>
           <input
-            id="tel"
-            name="tel"
+            id="phoneNumber"
+            name="phoneNumber"
             type="tel"
             oninput="autoHyphen(this)"
             pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
@@ -81,8 +82,8 @@
         <fieldset>
           <legend>파레트 수량</legend>
           <input
-            id="pallete"
-            name="pallete"
+            id="amountPallet"
+            name="amountPallet"
             type="number"
             placeholder="10"
             class="input"
@@ -95,7 +96,7 @@
 
         <fieldset>
           <legend>차종</legend>
-          <select name="field4" class="select-field">
+          <select name="carType" class="select-field" id="carType">
             <option value="1t">1t</option>
             <option value="2.5t">2.5t</option>
             <option value="3.5t">3.5t</option>
@@ -103,7 +104,7 @@
             <option value="11t">11t</option>
             <option value="컨테이너">컨테이너</option>
           </select>
-          <label for="carWeight" class="label"></label>
+          <label for="carType" class="label"></label>
         </fieldset>
 
         <fieldset>
@@ -119,11 +120,42 @@
           <label for="date" class="label"></label>
         </fieldset>
 
-        <button type="submit" class="submitButton">예약등록하기</button>
+        <button type="submit" class="submitButton" onclick="reserveBtn()">예약등록하기</button>
       </form>
     </main>
     <script src="./js/regex.js"></script>
     <script src="./js/addItem.js"></script>
     <script src="./js/flatpickr.js"></script>
+
+    <script>
+      // const api = 'reserve'
+  
+      function reserveBtn() {
+        console.log('start 3pl reserve')
+  
+        $.ajax({
+          type: "POST",
+          url: "http://3.37.129.143" + "/reservation",
+          data: {
+            type: 'TPL',
+            departure: $('#departure').val(),
+            password: $('#password').val(),
+            carNumber: $('#carNumber').val(),
+            phoneNumber: $('#phoneNumber').val(),
+            amountPallet: $('#amountPallet').val(),
+            carType: $('#carType').val(),
+            DateAndTime: $('#date').val(),
+          },
+          success: function (response) {
+            console.log('예약 완료')
+            alert("예약 완료")
+            window.location.href("/admin");
+          },
+          error: function (error) {
+            alert(error.responseJSON.errorMessage);
+          },
+        });
+      }
+    </script>
   </body>
 </html>

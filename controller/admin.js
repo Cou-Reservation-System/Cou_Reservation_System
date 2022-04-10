@@ -39,9 +39,6 @@ module.exports.join = async (req, res) => {
       .pbkdf2Sync(password, salt, 100000, 64, 'sha512')
       .toString('base64');
 
-    console.log('솔트는', salt);
-    console.log('해쉬비번은', hashPassword);
-
     await Admin.create({ id, email, password: hashPassword, salt });
 
     res.status(201).json({ ok: true, message: '회원가입이 완료되었습니다.' });
@@ -54,16 +51,10 @@ module.exports.join = async (req, res) => {
   }
 };
 
-// 로그인 Joi
-const loginSchema = Joi.object({
-  id: Joi.string().min(3).required(),
-  password: Joi.string().min(4).required(),
-})
-
 // 로그인
 module.exports.login = async (req, res) => {
   try {
-    const { id, password } = await loginSchema.validateAsync(req.body);
+    const { id, password } = req.body;
 
     const admin = await Admin.findOne({ where: { id } });
 
@@ -117,5 +108,66 @@ module.exports.auth = async (req, res) => {
     res
       .status(400)
       .json({ ok: false, errorMessage: '로그인 확인을 실패하였습니다.' });
+  }
+};
+
+// 비밀번호 찾기 (본인 확인)
+module.exports.findPassword = async (req, res) => {
+  try {
+    const { id, email } = req.body;
+
+    const admin = await Admin.findOne({ where: { id, email } });
+
+    if (!admin) {
+      return res.json({
+        ok: false,
+        errorMessage: '아이디 또는 이메일을 확인해주세요.',
+      });
+    }
+
+    res.json({ ok: true, message: '본인확인이 완료되었습니다.' });
+  } catch (err) {
+    console.error(`${err}에러로 비밀번호 찾기를 실패하였습니다.`);
+    res
+      .status(400)
+      .json({ ok: false, errorMessage: '비밀번호 찾기를 실패하였습니다.' });
+  }
+};
+
+// 비밀번호 재설정
+module.exports.resetPassword = async (req, res) => {
+  try {
+    const { id, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.json({
+        ok: false,
+        errorMessage: '비밀번호가 비밀번호 확인란과 동일하지 않습니다.',
+      });
+    }
+
+    // 원래있던 비밀번호
+    const admin = await Admin.findOne({ where: { id } });
+    const originHashPassword = admin.password;
+    const originSalt = admin.salt; 
+
+    // 새로 저장할 비밀번호
+    const newSalt = crypto.randomBytes(64).toString('base64');
+    const newHashPassword = crypto
+      .pbkdf2Sync(password, newSalt, 100000, 64, 'sha512')
+      .toString('base64');
+
+    await Admin.update(
+      { password: newHashPassword },
+      { where: { password: originHashPassword } }
+    );
+    await Admin.update({ salt: newSalt }, { where: { salt: originSalt } });
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(`${err}에러로 비밀번호 재설정을 실패하였습니다.`);
+    res
+      .status(400)
+      .json({ ok: false, errorMessage: '비밀번호 재설정을 실패하였습니다.' });
   }
 };
