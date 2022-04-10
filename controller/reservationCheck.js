@@ -19,7 +19,7 @@ module.exports.checkTargetCarRecord = async (req, res) => {
 async function checkEveryReservation(req, res) {
   try {
     const reservedList = await sequelize.query(
-      "SELECT *,'coupangs' AS tableName FROM coupangs WHERE isDone = 0 UNION ALL SELECT *,'3pl' FROM 3pl WHERE isDone = 0",
+      "SELECT *,'Coupangs' AS tableName FROM Coupangs WHERE isDone = 0 UNION ALL SELECT *,'3PL' FROM 3PL WHERE isDone = 0",
       {
         type: QueryTypes.SELECT,
       }
@@ -50,10 +50,10 @@ async function checkDailyReservation(req, res) {
     const startDate = req.query.startDate;
     const endDate = req.query.endDate;
     const reservedList = await sequelize.query(
-      `SELECT *,\'coupangs\' AS tableName FROM coupangs 
+      `SELECT *,\'Coupangs\' AS tableName FROM Coupangs 
       WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')
       UNION ALL 
-      SELECT *,\'3pl\' FROM 3pl 
+      SELECT *,\'3PL\' FROM 3PL 
       WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')`,
       {
         type: QueryTypes.SELECT,
@@ -61,10 +61,10 @@ async function checkDailyReservation(req, res) {
     );
     const countReservedList = await sequelize.query(
       `SELECT SUM(CNT) AS totalCount 
-      FROM (SELECT COUNT(*) AS CNT FROM coupangs 
+      FROM (SELECT COUNT(*) AS CNT FROM Coupangs 
       WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\') 
       UNION ALL 
-      SELECT COUNT(*) AS CNT FROM 3pl 
+      SELECT COUNT(*) AS CNT FROM 3PL 
       WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')) tmp`,
       {
         type: QueryTypes.SELECT,
@@ -100,11 +100,11 @@ async function checkTargetCarRecord(req, res) {
     const targetRow = await sequelize.query(
       `SELECT * FROM
         (
-            SELECT *,'coupangs' AS tableName
-            FROM coupangs
+            SELECT *,'Coupangs' AS tableName
+            FROM Coupangs
             UNION ALL
-            SELECT *,'3pl'
-            FROM 3pl
+            SELECT *,'3PL'
+            FROM 3PL
         ) truckHouse
         WHERE truckHouse.carNumber = \'${targetCarNumber}\'`,
       {
