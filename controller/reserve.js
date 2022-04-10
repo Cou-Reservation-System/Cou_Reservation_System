@@ -13,9 +13,9 @@ module.exports.getReserveCount = async (req, res) => {
         }
     );
 
-    dateAndTime = dateAndTime.map((dateAndTime)=>{
-      return dateAndTime.date
-    })
+    // dateAndTime = dateAndTime.map((dateAndTime)=>{
+    //   return dateAndTime.date
+    // })
     
     res.json({ ok: true, message: "해당 시간은 5회가 모두 마감되었습니다.", dateAndTime});
   } catch (err) {
