@@ -54,8 +54,8 @@ function changePassBtn (id) {
         url: "/admin/resetPassword",
         data: {
             id,
-            newPass: $("#newPass").val(),
-            newPassCon: $("#newPassCon").val()
+            password: $("#newPass").val(),
+            confirmPassword: $("#newPassCon").val()
         },
         success: function (response) {
             window.location.replace("/")

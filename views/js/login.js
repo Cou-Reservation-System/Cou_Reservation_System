@@ -5,7 +5,7 @@
         url: "/admin/login",
         data: {
             id: $("id").val(),
-            pass: $("pass").val()
+            password: $("pass").val()
         },
         success: function(response) {
             localStorage.setItem("token", response.token);
