@@ -1,7 +1,19 @@
 body{
     background-color: rgb(231, 231, 231);
 }
-/* 타이틀 */
+
+/* header */
+.arrow-prev {
+    position: absolute;
+    left: 35px;
+    top: 22px;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
+    transform: rotate(225deg);
+}
 .title1{
     background-color: #3bb2e9;
     margin: 0% auto 0% auto;
@@ -10,6 +22,7 @@ body{
     padding: 16px;
     text-align: center;
     color: white;
+    height: 65px;
 }
 .title2{
     background-color: white;
