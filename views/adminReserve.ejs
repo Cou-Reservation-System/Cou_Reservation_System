@@ -6,13 +6,11 @@
     <meta charset="UTF-8" />
     <title>관리자 페이지</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
     <!-- Bootstrap CSS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />  
 
     <!-- jQuery, Popper, Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,13 +21,27 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <!-- font -->
-
-    <link rel="stylesheet" href="./css/adminPage2.css" />
-
+    <!-- 달력 flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <link rel="stylesheet" href="./css/adminPage.css" />
   </head>
   <style></style>
+
+  <script>
+
+      $(document).ready(function (){
+        getAllData()
+      })
+
+    // const dateSelector = document.querySelector('.date_select1');
+    // dateSelector.flatpickr();
+    $(".selector").flatpickr({
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    });
+  </script>
 
   <body> <!-- 화면실행 Shift + Alt + B --> 
     <header>
@@ -46,28 +58,33 @@
         <!-- <body> -->
           <!-- <main> -->
           <div class="main_wrap">
-            <div class="choice_wrap">
-              <div id="center">
-                <span id="center_text">센터</span>
+            <!-- <div class="choice_wrap">
+              <div id="center_wrap">
+                <div id="center">
+                  <span id="center_text">센터</span>
+                </div>
+                <div name="center_select" id="center_select" >여주 쿠팡
               </div>
-              <div name="center_select" id="center_select" >여주 쿠팡
               </div>
               <div id="date_wrap">
                 <div id="show_date">
                   <span id="choiceDate">날짜 입력</span>
                 </div>
                 <div id="dates">
-                  <input name="date_select1" id="date_select1" class="date_select1" placeholder="2022-04-10">
-                  &nbsp;~&nbsp;
-                  <input name="date_select2" id="date_select2" class="date_select2" placeholder="2022-04-10">
+                  <div id="dates_input">
+                    <input name="date" id="date_select1" class="date_select1" placeholder="2022-04-10">
+                    <span> ~ </span>
+                    <input name="date" id="date_select2" class="date_select2" placeholder="2022-04-10">
+                  </div>
+                  <button type="button" class="date_wrap_btn" id="date_wrap_btn">조회</button>
                 </div>
-              </div>
-              <button type="button" class="date_wrap_btn" id="date_wrap_btn">조회</button>
+              </div> -->
             </div>
            
             <!-- <메인 보기> -->
+
             <div class="show_wrap">
-              <table class="show_table" >
+              <table class="show_table table" >
                 <thead id="show_thead">
                   <tr>
                       <th scope="col">날짜</th>
@@ -77,15 +94,18 @@
                       <th scope="col">출발지</th>
                       <th scope="col">전화번호</th>
                       <th scope="col">수량(파레트)</th>
+                      <th scope="col">완료</th>
                   </tr>
                 </thead>
                 <tbody id="showBox">
                 </tbody>
               </table>
-            </div>  
+            </div>
           </div>
     
     <!-- Scripts  -->
-    <!-- <script src="/js/"></script> -->
+    <script src="./js/flatpickr.js"></script>
+    <script src="./js/addItem.js"></script>
+    <script src="./js/adminReserve.js"></script>
   </body>
 </html>

@@ -46,16 +46,12 @@ body {
 
 /* 메인 */
 .main_wrap{
-  background-color: white;
-  position: absolute;
-  left: 50%;
-  top: 58%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  height: 70%;
   padding: 30px;
   font-size: 18px;
   font-weight: 600;
+  background-color: white;
+  width: 90%;
+  margin: 15px auto 0px auto;
 }
 
 /* 조회 버튼 */
@@ -67,9 +63,7 @@ body {
   margin-top: 1rem;
   padding: 10px 10px 10px 10px;
   color: rgb(255, 255, 255);
-  font-size: 18px;
   font-weight: 700;
-  cursor: pointer;
   border: none;
   background: #3bb2e9;
   border-radius: 0.4rem;
@@ -83,9 +77,7 @@ body {
   margin-top: 1rem;
   padding: 10px 10px 10px 10px;
   color: rgb(255, 255, 255);
-  font-size: 18px;
   font-weight: 700;
-  cursor: pointer;
   border: none;
   background: #3bb2e9;
   border-radius: 0.4rem;
@@ -93,123 +85,135 @@ body {
 
 .btn_wrap{
   display: flex;
-  width: 50%;
-  min-width: 400px;
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0 10%;
   margin: 0 auto;
 }
 
+#center_wrap{
+  display: flex;
+    height: 50px;
+}
+
 /* 센터 */
-.choice_wrap{
-  position: relative;
-  left: 3%
-}
 #center{
-  position: relative;
-  top: 27px;
-}
-#center_text{
-  position: absolute;
-  width: 16%;
-  height: 47px;
-  padding: 10px;
   text-align: center;
   border: 1px solid #aaaaaa;
   background-color: #f5f5f5;
-}
-#center_select{
-  padding: 10px;
-  position: absolute;
-  top: 27px;
-  left: 170px;
-  width: 78%;
-  height: 47px;
-  border: 1px solid #aaaaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
 }
 
-/* 날짜 */
-#date_wrap{
-  position: relative;
-  top: 73px;
-  width: 1054px;
-}
-#show_date{
-  border: 1px solid #aaaaaa;
-  width: 95%;
-  height: 48px;
-}
-#choiceDate{
-  padding: 10px;
-  border: 1px solid #aaaaaa;
-  width: 171px;
-  height: 48px;
-  text-align: center;
-  background-color: #f5f5f5;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-}
-
-#dates{
-  position: absolute;
-  top: 13%;
-  left: 17%;
-}
-
-#date_select1{
-  height: 36px;
-  width: 34%;
-  padding: 10px;
-  border: 1px solid #aaaaaa;
-  font-weight: 600;
+/* @media ( max-width: 1023px ) { */
+  #center_select{
+    border: 1px solid #aaaaaa;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 80%;
+  }
   
-}
-#date_select2{
-  height: 36px;
-  width: 34%;
-  padding: 10px;
-  border: 1px solid #aaaaaa;
-  font-weight: 600;
+  /* 날짜 */
+  #date_wrap{
+    border: 1px solid #aaaaaa;
+    display: flex;
+    height: 50px;
+  }
+  #show_date{
+    width: 20%;
+    text-align: center;
+    border: 1px solid #aaaaaa;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #dates{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: flex-start;
+  }
+  #dates_input{
+    width: 80%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #date_select1{
+    height: 36px;
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    font-weight: 600;
+    box-sizing: border-box;
+  }
+  #date_select2{
+    height: 36px;
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    font-weight: 600;
+    box-sizing: border-box;
+  }
 
-}
+  @media ( max-width: 1023px ) { 
+    .main_wrap{
+      width: 100%;
+      padding: 0;
+      font-size: 13px;
+    }
+    .btn_wrap > button {
+      font-size: 15px;
 
-.date_wrap_btn{
-  margin-top: 1rem;
-  padding: 2px 10px 2px 10px;
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1px solid #8f8b8b;
-  background-color: #8f8b8b;
-  position: absolute;
-  top: 138%;
-  left: 54%;
-  height: 64%;
-  width: 6%;
-}
+    }
+  }
+
+  .date_wrap_btn{
+    right: calc(-40px + -1%);
+    top: calc(50% - 15px);
+    color: rgb(255, 255, 255);
+    font-size: 9px;
+    font-weight: 700;
+    border: 1px solid #8f8b8b;
+    background-color: #8f8b8b;
+    width: 40px;
+    box-sizing: border-box;
+    display: block;
+    height: 30px;
+    margin-left: 5px;
+  }
+/* } */
 
 /* 메인 */
 .show_wrap{
-  position: absolute;
-  top: 36%;
-  left: 20%;
-  /* width: 1031px; */
+  padding: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.show_table{
-  width: 237%;
-  height: 34px;
-  position: relative;
-  top: -24px;
-  left: -164px;
+/* .show_table{
+  padding: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: white;
+  width: 90%;
+  margin: auto;
+} */
+
+.totalCnt{
+  font-size: 18px;
   text-align: center;
-  border-top-color: #6a6767;
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-bottom-color: rgb(126 127 127);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  padding-top: 15px;
 }
