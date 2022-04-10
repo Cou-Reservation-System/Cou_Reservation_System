@@ -1,4 +1,30 @@
-const { TPL, Coupang } = require('../models');
+const { TPL, Coupang, sequelize } = require('../models');
+const { QueryTypes } = require('sequelize');
+
+// 시간 조회
+module.exports.getReserveCount = async (req, res) => {
+  try {
+    let dateAndTime = await sequelize.query(
+      `SELECT DateAndTime AS cnt FROM Coupangs 
+      GROUP BY DateAndTime 
+      HAVING COUNT(*) = 5`,
+        {
+          type: QueryTypes.SELECT,
+        }
+    );
+
+    dateAndTime = dateAndTime.map((dateAndTime)=>{
+      return dateAndTime.cnt
+    })
+    
+    res.json({ ok: true, message: "해당 시간은 5회가 모두 마감되었습니다.", dateAndTime});
+  } catch (err) {
+    console.error(`${err}에러로 시간 조회에 실패하였습니다.`);
+    res
+      .status(400)
+      .json({ ok: false, errorMessage: '시간 조회에 실패하였습니다.' });
+  }
+};
 
 // 예약 등록
 module.exports.postReserve = async (req, res) => {
@@ -116,7 +142,7 @@ module.exports.getReserve = async (req, res) => {
 // 예약 수정
 module.exports.putReserve = async (req, res) => {
   try {
-    const { type, typeId } = req.params;
+    const { type, typeId } = req.body;
     const reserveInfo = req.body;
 
     // 예약 되어있는지 찾기
@@ -155,7 +181,7 @@ module.exports.putReserve = async (req, res) => {
 // 예약 삭제
 module.exports.deleteReserve = async (req, res) => {
   try {
-    const { type, typeId } = req.params;
+    const { type, typeId } = req.body;
 
     //예약 되어있는지 찾기
     const reserve =
