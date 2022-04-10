@@ -73,7 +73,7 @@ module.exports.login = async (req, res) => {
 
     // 비밀번호 불일치
     if (hashPassword !== admin.password) {
-      res.json({
+      return res.json({
         ok: false,
         errorMessage: '아이디 또는 비밀번호를 확인해주세요.',
       });
