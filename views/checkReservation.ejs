@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>수정/삭제하기</title>
     <link rel="stylesheet" href="./css/chooseStyles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/reserveStyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      // var sum = 1+2+3+4;
+	    // document.getElementById("data").innerHTML=sum;
+      $(document).ready(function (){
+        test()
+      })
+
+      // console.log(document.getElementById("departure"))
+      // const test1 = 'asdf'
+      function test() {
+        const departure = localStorage.getItem.departure
+
+        document.getElementById("departure").value = 'test1'
+      }
+
+    </script>
   </head>
   <body>
     <header>
@@ -19,11 +44,13 @@
         <fieldset>
           <legend>출발지</legend>
           <input
-            id="name"
+            id="departure"
+            name="departure"
             type="text"
             placeholder="김쿠쿠"
             class="input"
             maxlength="10"
+            value=""
             required
           />
           <label for="name" class="label"></label>
@@ -33,6 +60,7 @@
           <legend>비밀번호</legend>
           <input
             id="password"
+            name="password"
             type="password"
             placeholder="1234"
             class="input"
@@ -45,8 +73,10 @@
           <legend>차량번호</legend>
           <input
             id="carNumber"
+            name="carNumber"
             type="text"
             placeholder="10 쿠 1234"
+            pattern="[0-9]{2,3} [ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1} [0-9]{4}"
             class="input"
             required
             maxlength="9"
@@ -58,7 +88,9 @@
           <legend>전화번호</legend>
           <input
             id="tel"
-            type="number"
+            type="tel"
+            oninput="autoHyphen(this)"
+            pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
             placeholder="010-1234-5678"
             class="input"
             required
@@ -69,8 +101,8 @@
         <fieldset id="pallete-field">
           <legend>파레트 수량</legend>
           <input
-            id="pallete"
-            name="pallete"
+            id="amountPallet"
+            name="amountPallet"
             type="number"
             placeholder="10"
             class="input"
@@ -83,7 +115,7 @@
 
         <fieldset>
           <legend>차종</legend>
-          <select class="select-field" name="carWeight">
+          <select class="select-field" name="carType" id="carType">
             <option value="1t">1t</option>
             <option value="2.5t">2.5t</option>
             <option value="3.5t">3.5t</option>
@@ -91,17 +123,9 @@
             <option value="11t">11t</option>
             <option value="컨테이너">컨테이너</option>
           </select>
-          <label for="carWeight" class="label"></label>
+          <label for="carType" class="label"></label>
         </fieldset>
 
-        <fieldset>
-          <legend>상차/하차</legend>
-          <select class="select-field">
-            <option value="up">상차</option>
-            <option value="down">하차</option>
-          </select>
-          <label for="upDown" class="label"></label>
-        </fieldset>
 
         <fieldset>
           <legend>날짜</legend>
@@ -116,9 +140,68 @@
           <label for="date" class="label"></label>
         </fieldset>
 
-        <button type="submit" class="editButton" id="edit">수정하기</button>
-        <button type="submit" class="deleteButton" id="delete">삭제하기</button>
+        <button type="button" class="editButton" id="edit" onclick="edit()">수정하기</button>
+        <button type="button" class="deleteButton" id="delete" onclick="deleteit()">삭제하기</button>
       </form>
     </main>
+    <script>
+      let type = localStorage.getItem('type')
+      let typeId = localStorage.getItem('typeId')
+    function edit() {
+        console.log('edit')
+        $.ajax({
+            type: "PUT",
+            url: "http://3.37.129.143"+"/reservation/getReservation",
+            data: {
+              type,
+              typeId,
+              departure: $('#departure').val(),
+              password: $('#password').val(),
+              carNumber: $('#carNumber').val(),
+              phoneNumber: $('#phoneNumber').val(), 
+              amountPallet: $('#amountPallet').val(), 
+              carType: $('#carType').val(), 
+              DateAndTime: $('#date').val(),
+            },
+            success: function (response) {
+              console.log('조회 완료', response)
+                alert("조회 완료")
+                localStorage.setItem('type' , response.type)
+                localStorage.setItem('typeId' , response.typeId)
+                window.location.href = "/checkReservation"
+            },
+            error: function (error) {
+                alert(error.responseJSON.errorMessage);
+            },
+        });
+      }
+
+      function deleteit() {
+        console.log('edit')
+        $.ajax({
+            // type: "POST",
+            // url: "http://3.37.129.143"+"/reservation/getReservation",
+            // data: {
+            //     departure: $('#departure').val(),
+            //     password: $('#password').val(),
+            //     carNumber: $('#carNumber').val(),
+            //     phoneNumber: $('#phoneNumber').val(), 
+            // },
+            // success: function (response) {
+            //   console.log('조회 완료', response)
+            //     alert("조회 완료")
+            //     localStorage.setItem('type' , response.type)
+            //     localStorage.setItem('typeId' , response.typeId)
+            //     window.location.href = "/checkReservation"
+            // },
+            // error: function (error) {
+            //     alert(error.responseJSON.errorMessage);
+            // },
+        });
+      }
+    </script>
+    <script src="./js/regex.js"></script>
+    <!-- <script src="./js/addItem.js"></script> -->
+    <script src="./js/flatpickr.js"></script>
   </body>
 </html>

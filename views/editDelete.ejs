@@ -100,9 +100,15 @@
             },
             success: function (response) {
               console.log('조회 완료', response)
-                alert("예약 완료")
+                alert("조회 완료")
                 localStorage.setItem('type' , response.type)
                 localStorage.setItem('typeId' , response.typeId)
+                localStorage.setItem('departure' , response.reserve.departure)
+                localStorage.setItem('carNumber' , response.reserve.carNumber)
+                localStorage.setItem('amountPallet' , response.reserve.amountPallet)
+                localStorage.setItem('carType' , response.reserve.carType)
+                localStorage.setItem('DateAndTime' , response.reserve.DateAndTime)
+
                 window.location.href = "/checkReservation"
             },
             error: function (error) {
