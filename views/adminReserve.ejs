@@ -4,80 +4,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>관리자 페이지</title>
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
+
 
     <!-- jQuery, Popper, Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
     <!-- font -->
 
-    <link rel="stylesheet" href="./css/adminPage.css" />
+    <link rel="stylesheet" href="./css/adminPage2.css" />
 
-    <title>관리자 페이지</title>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   </head>
   <style></style>
 
   <body> <!-- 화면실행 Shift + Alt + B --> 
-    <h3 class="title1">관리자 페이지</h3>
+    <header>
+      <a href="javascript:window.history.back();"
+        ><span class="arrow-prev"></span
+      ></a>
+      <h3 class="title1">관리자 페이지</h3>
+    </header>
     <h5 class="title2">관리자 페이지</h5>
       <div class="btn_wrap">
-        <button onclik="getDate()" class="date_btn" id="date_btn" type="button">날짜 조회</button>
-        <button onclik="getCar()" class="car_btn" id="car_btn" type="button">차량 조회</button>
+        <button onclick="getDate()" class="date_btn" id="date_btn" type="button">날짜 조회</button>
+        <button onclick="getCar()" class="car_btn" id="car_btn" type="button">차량 조회</button>
       </div>
         <!-- <body> -->
           <!-- <main> -->
-          <div>
-          <div class="table_one">
-            <table class="table table-bordered">
-              <thead>
-                <tr class="d-flex">
-                  <th class="center">센터</th>
-                  <th class="centerName">여주 쿠팡</th>
-                </tr>
-                <tr class="d-flex">
-                  <th class="center">날짜 선택</th>
-                  <th class="centerName"> <div class="input-group input-daterange"> <input type="text" class="form-control input1" placeholder="시작 날짜" readonly> ~ <input type="text" class="form-control input2" placeholder="종료 날짜" readonly> </div>
-                  </th>    
-                </tr>
-              </thead>
-            </table>            
+          <div class="main_wrap">
+            <div class="choice_wrap">
+              <div id="center">
+                <span id="center_text">센터</span>
+              </div>
+              <div name="center_select" id="center_select" >여주 쿠팡
+              </div>
+              <div id="date_wrap">
+                <div id="show_date">
+                  <span id="choiceDate">날짜 입력</span>
+                </div>
+                <div id="dates">
+                  <input name="date_select1" id="date_select1" class="date_select1" placeholder="2022-04-10">
+                  &nbsp;~&nbsp;
+                  <input name="date_select2" id="date_select2" class="date_select2" placeholder="2022-04-10">
+                </div>
+              </div>
+              <button type="button" class="date_wrap_btn" id="date_wrap_btn">조회</button>
+            </div>
+           
+            <!-- <메인 보기> -->
+            <div class="show_wrap">
+              <table class="show_table" >
+                <thead id="show_thead">
+                  <tr>
+                      <th scope="col">날짜</th>
+                      <th scope="col">시간</th>
+                      <th scope="col">차량번호</th>
+                      <th scope="col">차종</th>
+                      <th scope="col">출발지</th>
+                      <th scope="col">전화번호</th>
+                      <th scope="col">수량(파레트)</th>
+                  </tr>
+                </thead>
+                <tbody id="showBox">
+                </tbody>
+              </table>
+            </div>  
           </div>
-          <!-- </div> -->
-          <!-- </main> -->
-            <div class="table_two">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">날짜</th>
-                            <th scope="col">시간</th>
-                            <th scope="col">차량번호</th>
-                            <th scope="col">차종</th>
-                            <th scope="col">출발지</th>
-                            <th scope="col">전화번호</th>
-                            <th scope="col">수량(파레트)</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            </div>
-        <!-- </body> -->
     
     <!-- Scripts  -->
     <!-- <script src="/js/"></script> -->

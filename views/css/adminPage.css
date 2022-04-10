@@ -2,240 +2,17 @@
 
 html,
 body {
-  height: 100%;
+  /* height: 100%;
   margin: 0;
   padding: 0;
   min-width: 320px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
   background-color: rgb(231, 231, 231);
 }
 
-/* * {
-  box-sizing: border-box;
-} */
-
-.title1{
-    background-color: #1ebbde;
-    margin: 0% auto 0% auto;
-    border: 1px solid lightgray;
-    width: 100%;
-    padding: 16px;
-    text-align: center;
-    color: white;
-}
-.title2{
-    background-color: white;
-    margin: 0% auto 0% auto;
-    width: 100%;
-    padding: 16px;
-    text-align: center;
-    color: #212529;
-}
-
-.center{
-  width: 10%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.centerName{
-  width: 30%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.date_btn{
-  width: 40%;
-}
-
-.car_btn{
-  width: 40%;
-}
-
-.btn_wrap{
-  display: flex;
-  width: 60%;
-  min-width: 400px;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0 10%;
-  margin: 0 auto;
-}
-
-.table_one{
-  width: 100%;
-  display: flex;
-  margin-top: 30px;
-  min-width: 400px;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.table_two{
-  display: flex;
-  width: 80%;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.d-flex{
-  justify-content: center;
-}
-
-input {
-  padding: 30px 15px !important;
-  border: 1px solid lightgrey !important;
-  border-radius: 10px;
-  box-sizing: border-box;
-  background-color: #fff !important;
-  color: #4CAF50 !important;
-  font-size: 18px !important;
-  letter-spacing: 1px;
-  position: relative;
-  font-weight: bold !important
-}
-
-.input1 {
-  text-align: left !important
-}
-
-.input2 {
-  text-align: right !important
-}
-
-input:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: 1px solid #512DA8;
-  outline-width: 0
-}
-
-::placeholder {
-  color: #BDBDBD;
-  opacity: 1
-}
-
-:-ms-input-placeholder {
-  color: #BDBDBD
-}
-
-::-ms-input-placeholder {
-  color: #BDBDBD
-}
-
-button:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  outline-width: 0
-}
-
-.datepicker {
-  background-color: #fff;
-  border-radius: 0 !important;
-  padding: 15px 20px !important;
-  align-content: center !important
-}
-
-.datepicker-dropdown {
-  top: 0;
-  left: calc(50% - 161px) !important
-}
-
-.datepicker-dropdown.datepicker-orient-left:before {
-  left: calc(50% - 6px) !important
-}
-
-.datepicker-dropdown.datepicker-orient-left:after {
-  left: calc(50% - 5px) !important
-}
-
-.datepicker table tr td.today,
-span.focused {
-  border-radius: 50% !important;
-  background-image: linear-gradient(#FFF3E0, #FFE0B2)
-}
-
-.datepicker table tr td.today.range {
-  background-image: linear-gradient(#eeeeee, #eeeeee) !important;
-  border-radius: 0 !important
-}
-
-thead tr:nth-child(3) th {
-  font-weight: bold !important;
-  padding-top: 10px;
-  padding-bottom: 10px
-}
-
-.old,
-.day,
-.new {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 0px !important;
-  border: 1px solid lightgrey !important
-}
-
-.day.old,
-.day.new {
-  background-color: #F5F5F5 !important;
-  color: #E0E0E0 !important
-}
-
-.day.old:hover,
-.day.new:hover {
-  border-radius: 0px !important
-}
-
-.old-day:hover,
-.day:hover,
-.new-day:hover,
-.month:hover,
-.year:hover,
-.decade:hover,
-.century:hover {
-  border-radius: 50% !important;
-  background-color: #eee
-}
-
-.active {
-  border-radius: 50% !important;
-  background-image: linear-gradient(#90CAF9, #64B5F6) !important;
-  color: #fff !important
-}
-
-.range-start,
-.range-end {
-  border-radius: 50% !important;
-  background-image: linear-gradient(#4CAF50, #4CAF50) !important
-}
-
-.range {
-  color: #4CAF50 !important
-}
-
-.prev,
-.next,
-.datepicker-switch {
-  border-radius: 0 !important;
-  padding: 10px 10px 10px 10px !important;
-  font-size: 18px;
-  opacity: 0.7;
-  color: #4CAF50
-}
-
-.prev:hover,
-.next:hover,
-.datepicker-switch:hover {
-  background-color: inherit !important;
-  opacity: 1
-}
-
-.arrow-prev {
+/* 타이틀 */
+.arrow-prev{
   position: absolute;
   left: 35px;
   top: 22px;
@@ -247,7 +24,7 @@ thead tr:nth-child(3) th {
   transform: rotate(225deg);
 }
 
-h3.title {
+.title1{
   min-width: 320px;
   padding: 1.2rem 0 1rem;
   margin: 0;
@@ -258,81 +35,35 @@ h3.title {
   font-family: "Pretendard";
 }
 
-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-form {
-  padding-top: 2rem;
-  width: 80%;
-}
-
-fieldset {
-  border-radius: 10px;
-  margin-bottom: 1.2rem;
-  border: solid 2px #c4c4c4;
-  display: relative;
-  transition: border 0.25s ease-in;
-}
-
-fieldset:focus-within {
-  border: solid 2px #777;
-}
-
-/* "개"를 오른쪽에 두기 */
-fieldset #pallete {
-  width: 85%;
-}
-
-legend {
-  color: #c4c4c4;
-  padding: 3px 6px;
-  transition: color 0.25s ease-in;
-}
-
-/* 입력창을 하나 선택했을 때 그것만 진해지게 하고싶다 */
-fieldset:focus-within legend {
-  color: #2b2b2b;
-}
-
-input {
-  border: none;
-  margin-top: 0.4rem;
-  font-size: 18px;
-}
-
-::placeholder {
-  color: #898989;
-}
-
-input:focus {
-  outline: none;
-}
-
-select {
+.title2{
+  background-color: white;
+  margin: 0% auto 0% auto;
   width: 100%;
+  padding: 16px;
+  text-align: center;
+  color: #212529;
+}
+
+/* 메인 */
+.main_wrap{
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 70%;
+  padding: 30px;
   font-size: 18px;
-  border: none;
+  font-weight: 600;
 }
 
-#editDelete {
-  background: #17739d;
-  top: 30rem;
-  height: 3.4rem;
-  min-width: 20rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  border: none;
-}
-
-Button {
+/* 조회 버튼 */
+.date_btn{
   text-decoration: none;
   top: 42rem;
   height: 3rem;
-  width: 100%;
+  width: 40%;
   margin-top: 1rem;
   padding: 10px 10px 10px 10px;
   color: rgb(255, 255, 255);
@@ -342,35 +73,143 @@ Button {
   border: none;
   background: #3bb2e9;
   border-radius: 0.4rem;
-  transition: background 0.25s ease-in;
 }
 
-a {
+.car_btn{
   text-decoration: none;
-}
-
-#check {
-  text-align: center;
+  top: 42rem;
   height: 3rem;
-  padding: 14px 10px 10px 10px;
-  vertical-align: middle;
-  background: #3bb2e9;
-  border-radius: 0.4rem;
+  width: 40%;
+  margin-top: 1rem;
+  padding: 10px 10px 10px 10px;
   color: rgb(255, 255, 255);
   font-size: 18px;
   font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: #3bb2e9;
+  border-radius: 0.4rem;
 }
 
-.submitButton:hover,
-.editButton:hover,
-#check:hover {
-  background: rgb(0, 65, 98);
+.btn_wrap{
+  display: flex;
+  width: 50%;
+  min-width: 400px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 10%;
+  margin: 0 auto;
 }
 
-.deleteButton {
-  background: #e93b3b;
+/* 센터 */
+.choice_wrap{
+  position: relative;
+  left: 3%
+}
+#center{
+  position: relative;
+  top: 27px;
+}
+#center_text{
+  position: absolute;
+  width: 16%;
+  height: 47px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #aaaaaa;
+  background-color: #f5f5f5;
+}
+#center_select{
+  padding: 10px;
+  position: absolute;
+  top: 27px;
+  left: 170px;
+  width: 78%;
+  height: 47px;
+  border: 1px solid #aaaaaa;
 }
 
-.deleteButton:hover {
-  background: #b82121;
+/* 날짜 */
+#date_wrap{
+  position: relative;
+  top: 73px;
+  width: 1054px;
+}
+#show_date{
+  border: 1px solid #aaaaaa;
+  width: 95%;
+  height: 48px;
+}
+#choiceDate{
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+  width: 171px;
+  height: 48px;
+  text-align: center;
+  background-color: #f5f5f5;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+#dates{
+  position: absolute;
+  top: 13%;
+  left: 17%;
+}
+
+#date_select1{
+  height: 36px;
+  width: 34%;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+  font-weight: 600;
+  
+}
+#date_select2{
+  height: 36px;
+  width: 34%;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+  font-weight: 600;
+
+}
+
+.date_wrap_btn{
+  margin-top: 1rem;
+  padding: 2px 10px 2px 10px;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #8f8b8b;
+  background-color: #8f8b8b;
+  position: absolute;
+  top: 138%;
+  left: 54%;
+  height: 64%;
+  width: 6%;
+}
+
+/* 메인 */
+.show_wrap{
+  position: absolute;
+  top: 36%;
+  left: 20%;
+  /* width: 1031px; */
+}
+
+.show_table{
+  width: 237%;
+  height: 34px;
+  position: relative;
+  top: -24px;
+  left: -164px;
+  text-align: center;
+  border-top-color: #6a6767;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-bottom-color: rgb(126 127 127);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
