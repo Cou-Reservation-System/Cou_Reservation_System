@@ -32,7 +32,7 @@ body {
   background: #3bb2e9;
   color: #ffffff;
   height: 4rem;
-  font-family: "Pretendard";
+  /* font-family: "Pretendard"; */
 }
 
 .title2{
@@ -224,7 +224,7 @@ body {
     right: calc(-40px + -1%);
     top: calc(50% - 15px);
     color: rgb(255, 255, 255);
-    font-size: 9px;
+    /* font-size: 9px; */
     font-weight: 700;
     border: 1px solid #8f8b8b;
     background-color: #8f8b8b;
@@ -239,7 +239,7 @@ body {
     right: calc(-40px + -1%);
     top: calc(50% - 15px);
     color: rgb(255, 255, 255);
-    font-size: 9px;
+    /* font-size: 9px; */
     font-weight: 700;
     border: 1px solid #8f8b8b;
     background-color: #8f8b8b;

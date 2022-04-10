@@ -21,9 +21,13 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <!-- 달력 flatpickr -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- 달력 -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--  -->
+
 
     <link rel="stylesheet" href="./css/adminPage.css" />
   </head>
@@ -33,14 +37,8 @@
 
       $(document).ready(function (){
         getAllData()
-      })
+      });
 
-    // const dateSelector = document.querySelector('.date_select1');
-    // dateSelector.flatpickr();
-    $(".selector").flatpickr({
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-    });
   </script>
 
   <body> <!-- 화면실행 Shift + Alt + B --> 
@@ -58,28 +56,7 @@
         <!-- <body> -->
           <!-- <main> -->
           <div class="main_wrap">
-            <!-- <div class="choice_wrap">
-              <div id="center_wrap">
-                <div id="center">
-                  <span id="center_text">센터</span>
-                </div>
-                <div name="center_select" id="center_select" >여주 쿠팡
-              </div>
-              </div>
-              <div id="date_wrap">
-                <div id="show_date">
-                  <span id="choiceDate">날짜 입력</span>
-                </div>
-                <div id="dates">
-                  <div id="dates_input">
-                    <input name="date" id="date_select1" class="date_select1" placeholder="2022-04-10">
-                    <span> ~ </span>
-                    <input name="date" id="date_select2" class="date_select2" placeholder="2022-04-10">
-                  </div>
-                  <button type="button" class="date_wrap_btn" id="date_wrap_btn">조회</button>
-                </div>
-              </div> -->
-            </div>
+          </div>
            
             <!-- <메인 보기> -->
 
@@ -104,8 +81,8 @@
           </div>
     
     <!-- Scripts  -->
-    <script src="./js/flatpickr.js"></script>
-    <script src="./js/addItem.js"></script>
+    <!-- <script src="./js/flatpickr.js"></script> -->
+    <!-- <script src="./js/addItem.js"></script> -->
     <script src="./js/adminReserve.js"></script>
   </body>
 </html>
