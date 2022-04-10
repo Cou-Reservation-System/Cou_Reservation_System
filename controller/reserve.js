@@ -7,15 +7,15 @@ module.exports.getReserveCount = async (req, res) => {
     let dateAndTime = await sequelize.query(
       `SELECT DateAndTime AS date FROM Coupangs 
       GROUP BY DateAndTime 
-      HAVING COUNT(*) = 5`,
+      HAVING COUNT(*) >= 5`,
         {
           type: QueryTypes.SELECT,
         }
     );
 
-    // dateAndTime = dateAndTime.map((dateAndTime)=>{
-    //   return dateAndTime.date
-    // })
+    dateAndTime = dateAndTime.map((dateAndTime)=>{
+      return dateAndTime.date
+    })
     
     res.json({ ok: true, message: "해당 시간은 5회가 모두 마감되었습니다.", dateAndTime});
   } catch (err) {
