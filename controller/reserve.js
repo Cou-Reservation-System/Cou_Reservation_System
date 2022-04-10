@@ -131,13 +131,30 @@ module.exports.getReserve = async (req, res) => {
     reserve = reserve
       ? reserve
       : await TPL.findOne({
+          attributes: [
+            'TPLId',
+            'departure',
+            'carNumber',
+            'phoneNumber',
+            'amountPallet',
+            'carType',
+            'DateAndTime',
+            'isDone',
+          ],
           where: {
             carNumber,
             isDone: false,
           },
         });
 
-    res.json({ ok: true, message: '예약 조회를 성공하였습니다.', reserve });
+    const type = reserve.CoupangId ? 'Coupang' : 'TPL';
+
+    res.json({
+      ok: true,
+      message: '예약 조회를 성공하였습니다.',
+      type,
+      reserve,
+    });
   } catch (err) {
     console.error(`${err}에러로 예약 조회를 실패하였습니다.`);
     res
