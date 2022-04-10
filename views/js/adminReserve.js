@@ -3,7 +3,7 @@ function getAllData() {
 
     $.ajax({
         type: 'GET',
-        url: '/admin/check/calender',
+        url: 'http://3.37.129.143/admin/check/calendar',
         headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -40,7 +40,12 @@ function getAllData() {
                 <th scope="col">${departure}</th>
                 <th scope="col">${phoneNumber}</th>
                 <th scope="col">${amountPallet}</th>
-                <th scope="col">완료</th>
+                <th scope="col"><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+              </div>
+              </th>
                 </tr>
                 `
                 $('#showBox').append(temp_html);
@@ -130,8 +135,8 @@ function getCar() {
           <div id="cars">
             <div id="car_input">
               <input name="car" id="car_select" class="car_select" placeholder="11쿠 1234">
+              <onclick="searchCar()" button type="button" class="car_wrap_btn" id="car_wrap_btn">조회</button>
             </div>
-            <onclick="searchCar()" button type="button" class="car_wrap_btn" id="car_wrap_btn">조회</button>
           </div>
         </div> 
         `
@@ -149,7 +154,7 @@ function searchDate() {
     const endDate = $('.date_select2').val()
     $.ajax({
         type: 'GET',
-        url: `/admin/check/calender/?startDate=${startDate}&endDate=${endDate}`,
+        url: `/admin/check/calendar/?startDate=${startDate}&endDate=${endDate}`,
         headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -175,7 +180,13 @@ function searchDate() {
                 <th scope="col">${departure}</th>
                 <th scope="col">${phoneNumber}</th>
                 <th scope="col">${amountPallet}</th>
-                <th scope="col">완료</th>
+                <th scope="col"><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  완료
+                </label>
+              </div>
+              </th>
                 </tr>
                 `
                 $('#showBox').append(temp_html);
@@ -190,7 +201,9 @@ function searchDate() {
 
 // 차량조회에서 조회버튼 누를 시
 function searchCar() {
+    console.log('tsest')
     const targetCarNumber = $('.car_select').val()
+    console.log(targetCarNumber)
     $.ajax({
         type:'GET',
         url: `/admin/check/?targetCarNumber=${carNum}`,
