@@ -88,7 +88,7 @@ const adminRouter = require("./routes/admin");
 const reservationCheckRouter = require("./routes/reservationCheck")
 const completeCheckRouter = require("./routes/completeCheck")
 
-app.use("/reserve", [reserveRouter]);
+app.use("/reservation", [reserveRouter]);
 app.use("/admin", [adminRouter, reservationCheckRouter, completeCheckRouter]);
 app.listen(port, () => {
     console.log(port, '포트로 서버가 켜졌습니다.');

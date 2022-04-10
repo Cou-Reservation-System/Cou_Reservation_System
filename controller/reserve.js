@@ -1,6 +1,6 @@
-const { isRef } = require('joi');
 const { TPL, Coupang } = require('../models');
 
+// 예약 등록
 module.exports.postReserve = async (req, res) => {
   try {
     const {
@@ -22,7 +22,7 @@ module.exports.postReserve = async (req, res) => {
       amountPallet,
       carType,
       DateAndTime,
-      isDone : false,
+      isDone: false,
     };
 
     // 쿠팡 예약 등록
@@ -83,6 +83,7 @@ module.exports.postReserve = async (req, res) => {
   }
 };
 
+// 예약 조회
 module.exports.getReserve = async (req, res) => {
   try {
     const { departure, password, carNumber, phoneNumber } = req.body;
@@ -103,7 +104,7 @@ module.exports.getReserve = async (req, res) => {
           },
         });
 
-    res.json({ ok: true, message: "예약 조회를 성공하였습니다.", reserve });
+    res.json({ ok: true, message: '예약 조회를 성공하였습니다.', reserve });
   } catch (err) {
     console.error(`${err}에러로 예약 조회를 실패하였습니다.`);
     res
@@ -111,5 +112,79 @@ module.exports.getReserve = async (req, res) => {
       .json({ ok: false, errorMessage: '예약 조회를 실패하였습니다.' });
   }
 };
-module.exports.putReserve = async (req, res) => {};
-module.exports.deleteReserve = async (req, res) => {};
+
+// 예약 수정
+module.exports.putReserve = async (req, res) => {
+  try {
+    const { type, typeId } = req.params;
+    const reserveInfo = req.body;
+
+    // 예약 되어있는지 찾기
+    const reserve =
+      type === 'Coupang'
+        ? await Coupang.findOne({ where: { CoupangId: typeId } })
+        : await TPL.findOne({ where: { TPLId: typeId } });
+    console.log(reserve);
+
+    if (!reserve) {
+      return res.json({
+        ok: false,
+        errorMessage: '예약내역이 존재하지 않습니다.',
+      });
+    }
+
+    // 예약 업데이트
+    type === 'Coupang'
+      ? await Coupang.update(reserveInfo, { where: { CoupangId: typeId } })
+      : await TPL.update(reserveInfo, { where: { TPLId: typeId } });
+
+    res.json({
+      ok: true,
+      message: '예약 수정을 성공하였습니다.',
+      type,
+      typeId,
+    });
+  } catch (err) {
+    console.error(`${err}에러로 예약 수정을 실패하였습니다.`);
+    res
+      .status(400)
+      .json({ ok: false, errorMessage: '예약 수정을 실패하였습니다.' });
+  }
+};
+
+// 예약 삭제
+module.exports.deleteReserve = async (req, res) => {
+  try {
+    const { type, typeId } = req.params;
+
+    //예약 되어있는지 찾기
+    const reserve =
+      type === 'Coupang'
+        ? await Coupang.findOne({ where: { CoupangId: typeId } })
+        : await TPL.findOne({ where: { TPLId: typeId } });
+
+    if (!reserve) {
+      return res.json({
+        ok: false,
+        errorMessage: '예약내역이 존재하지 않습니다.',
+      });
+    }
+
+    // 예약 삭제
+    type === 'Coupang'
+      ? await Coupang.destroy({ where: { CoupangId: typeId } })
+      : await TPL.destroy({ where: { TPLId: typeId } });
+
+    res.json({
+      ok: true,
+      message: '예약 삭제를 성공하였습니다.',
+      type,
+      typeId,
+    });
+  } catch (err) {
+    console.error(`${err}에러로 예약 삭제를 실패하였습니다.`);
+    res
+      .status(400)
+      .json({ ok: false, errorMessage: '예약 삭제를 실패하였습니다.' });
+  }
+};
