@@ -12,7 +12,7 @@ function join() {
         success: function (response) {
             alert("회원가입을 축하합니다.");
             console.log("회원가입 완료");
-            window.location.replace("/admin/login");
+            window.location.replace("/login");
         },
         error:function (error) {
             alert("회원가입 실패: " + error.responseJSON.errorMessage);

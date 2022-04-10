@@ -33,10 +33,10 @@ function findPass() {
             $('#findPassBtn').hide()
             const temp_html = `<div class="inputWrap" id="inputWrap">
             <div class="newPass">
-               <input id="newPass" type="text" placeholder="새 비밀번호" />
+               <input id="newPass" type="password" placeholder="새 비밀번호" />
                 </div>
                 <div class="newPassCon">
-                <input id="newPassCon" type="text" placeholder="새 비밀번호 확인" />
+                <input id="newPassCon" type="password" placeholder="새 비밀번호 확인" />
                 </div>
                 </div>
                 <div class="btnWrap">
@@ -48,7 +48,7 @@ function findPass() {
     });
  };
 
-function changePassBtn (id) {
+function changePass (id) {
     $.ajax({
         type: "PUT",
         url: "/admin/resetPassword",
@@ -58,7 +58,7 @@ function changePassBtn (id) {
             confirmPassword: $("#newPassCon").val()
         },
         success: function (response) {
-            window.location.replace("/")
+            window.location.replace("/login")
 
         }
     });
