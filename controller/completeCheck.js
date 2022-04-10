@@ -12,13 +12,13 @@ async function ReceivingCheck(req, res) {
 
     const targetRow = await sequelize.query(
       `SELECT CoupangId AS id, tableName
-        FROM    
+        FROM
         (
-            SELECT *,'coupangs' AS tableName
-            FROM coupangs
+            SELECT *,'Coupangs' AS tableName
+            FROM Coupangs
             UNION ALL
-            SELECT *,'3pl'
-            FROM 3pl
+            SELECT *,'3PL'
+            FROM 3PL
         ) truckHouse
         WHERE truckHouse.carNumber = ${targetCarNumber}`,
       {
@@ -37,18 +37,18 @@ async function ReceivingCheck(req, res) {
     const targetTableName = targetRow[0].tableName;
     let returnIsDone;
 
-    if (targetTableName === 'coupangs') {
+    if (targetTableName === 'Coupangs') {
       returnIsDone = await sequelize.query(
-        `update coupangs
+        `update Coupangs
       set isDone = if(isDone = 0,true,false)
       where CoupangId = ${targetId}`,
         {
           type: QueryTypes.UPDATE,
         }
       );
-    } else if (targetTableName === '3pl') {
+    } else if (targetTableName === '3PL') {
       returnIsDone = await sequelize.query(
-        `update 3pl
+        `update 3PL
         set isDone = if(isDone = 0,true,false)
         where TPLId = ${targetId}`,
         {
