@@ -12,7 +12,7 @@ async function ReceivingCheck(req, res) {
 
     const targetRow = await sequelize.query(
       `SELECT CoupangId AS id, tableName
-        FROM
+        FROM    
         (
             SELECT *,'coupangs' AS tableName
             FROM coupangs
