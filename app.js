@@ -50,15 +50,21 @@ app.get("/admin", (req, res) => {
 app.get("/", (req, res) => {
   res.render("choose");
 });
+// 일반 예약 
 app.get("/coupangreserve", (req, res) => {
   res.render("reserve");
 })
+// 3pl예약
 app.get("/3plreserve", (req, res) => {
   res.render("reserve3pl");
 })
-
+// 관리자 
 app.get('/adminReserve', (req, res) => {
     res.render('adminReserve');
+})
+//수정 삭제
+app.get('/editDelete', (req, res) => {
+  res.render("editDelete")
 })
 
 ///admin URL 접속시 login 렌더링
@@ -84,7 +90,6 @@ const completeCheckRouter = require("./routes/completeCheck")
 
 app.use("/reserve", [reserveRouter]);
 app.use("/admin", [adminRouter, reservationCheckRouter, completeCheckRouter]);
-
 app.listen(port, () => {
     console.log(port, '포트로 서버가 켜졌습니다.');
   });
