@@ -1,23 +1,5 @@
-const { Coupang } = require('../models/coupang');
-
-//데이터 불러오기, 날짜별 조회할 경우 그 냘의 수량도 불러오기
-module.exports.findReservedList = async (options = {
-    date: null,
-}) => {
-    let stage = {}
-
-    if (date !== null) {
-        stage.push(
-            {
-                where: { DateAndTime: date },
-              }
-        )
-
-        return Coupang.findAndCountAll(...stage)
-    }
-
-    return Coupang.findAll(...stage)
-}
+const { Coupang, sequelize } = require('../models');
+const { QueryTypes } = require('sequelize');
 
 //예약 전체 조회하기
 module.exports.checkEveryReservation = async (req, res) => {
@@ -31,8 +13,9 @@ module.exports.checkDailyReservation = async (req, res) => {
 
 async function checkEveryReservation(req, res) {
   try {
-    const reservedList = await findReservedList()
-
+    const reservedList = await sequelize.query('select * from coupangs union all select * from 3pl', {
+        type: QueryTypes.SELECT,
+      });
     res.status(200).json({
       reservedList,
       ok: true,
@@ -49,9 +32,8 @@ async function checkEveryReservation(req, res) {
 async function checkDailyReservation(req, res) {
   try {
     const date = req.query.date
-    const reservedList = await findReservedList({
-        date,
-    })  
+    const reservedList = await sequelize.query(`select * from coupangs where \'dateAndTime\' = ${date} union all select * from 3pl where \'dateAndTime\' = ${date}` , {
+    })
     res.status(200).json({
         reservedList,
         ok: true,
