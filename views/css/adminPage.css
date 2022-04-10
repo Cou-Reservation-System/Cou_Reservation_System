@@ -19,6 +19,7 @@ body {
   text-align: center;
   color: white;
   height: 65px;
+  cursor: pointer;
 }
 
 .title2{
