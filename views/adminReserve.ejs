@@ -41,7 +41,7 @@
 
       function logoutBtn() {
         if (localStorage.getItem("token")) {
-          $("#logoutBtn").append(`<button type="button" id="logout" name="logout" onclick="logout()">로그아웃</button>`)
+          $("#logoutBtn").append(`<button id="logout" onclick="logout()">로그아웃</button>`)
         }
       }
 
@@ -54,7 +54,7 @@
 
   <body> <!-- 화면실행 Shift + Alt + B --> 
     <header>
-      <h3 class="title1">관리자 페이지</h3>
+      <h3 class="title1" onclick="adminHome()">관리자 페이지</h3>
       <div id="logoutBtn"></div>
       
     </header>

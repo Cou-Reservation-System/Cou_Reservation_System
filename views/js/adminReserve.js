@@ -1,9 +1,13 @@
+//관리자 페이지 홈
+function adminHome() {
+  window.location.replace("/adminReserve")
+};
+
 // 초기 default 값 전체조회
 function getAllData() {
-
     $.ajax({
         type: 'GET',
-        url: 'http://3.37.129.143/admin/check/calendar',
+        url: '/admin/check/calendar',
         headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
         },
