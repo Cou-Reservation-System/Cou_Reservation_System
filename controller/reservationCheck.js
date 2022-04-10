@@ -6,7 +6,7 @@ module.exports.checkEveryReservation = async (req, res) => {
   await checkEveryReservation(req, res);
 };
 
-//예약 날짜별 조회하기
+//예약 기간별 조회하기
 module.exports.checkDailyReservation = async (req, res) => {
   await checkDailyReservation(req, res);
 };
@@ -14,12 +14,12 @@ module.exports.checkDailyReservation = async (req, res) => {
 //차 번호별 조회하기
 module.exports.checkTargetCarRecord = async (req, res) => {
   await checkTargetCarRecord(req, res);
-}
+};
 
 async function checkEveryReservation(req, res) {
   try {
     const reservedList = await sequelize.query(
-      'select *,\'coupangs\' as tableName from coupangs where isDone = 0 union all select *,\'3pl\' from 3pl where isDone =0',
+      "SELECT *,'coupangs' AS tableName FROM coupangs WHERE isDone = 0 UNION ALL SELECT *,'3pl' FROM 3pl WHERE isDone = 0",
       {
         type: QueryTypes.SELECT,
       }
@@ -27,9 +27,9 @@ async function checkEveryReservation(req, res) {
 
     if (reservedList.length === 0) {
       return res.status(200).json({
-        ok:true,
-        message: '예약된 목록이 없습니다.'
-      })
+        ok: true,
+        message: '예약된 목록이 없습니다.',
+      });
     }
     res.status(200).json({
       reservedList,
@@ -37,7 +37,7 @@ async function checkEveryReservation(req, res) {
       message: '조회가 완료되었습니다.',
     });
   } catch (error) {
-    console.error(error)
+    console.error(error);
     res.status(400).json({
       ok: false,
       errorMessage: '조회에 실패했습니다.',
@@ -47,17 +47,25 @@ async function checkEveryReservation(req, res) {
 
 async function checkDailyReservation(req, res) {
   try {
-    const date = req.query.DateAndTime;
+    const startDate = req.query.startDate;
+    const endDate = req.query.endDate;
     const reservedList = await sequelize.query(
-      `select *,\'coupangs\' as tableName from coupangs where DateAndTime = \'${date}\' union all select *,\'3pl\' from 3pl where DateAndTime = \'${date}\'`,
+      `SELECT *,\'coupangs\' AS tableName FROM coupangs 
+      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')
+      UNION ALL 
+      SELECT *,\'3pl\' FROM 3pl 
+      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')`,
       {
         type: QueryTypes.SELECT,
       }
     );
     const countReservedList = await sequelize.query(
-      `select sum(CNT) as totalCount from (select count(*) as CNT from coupangs where DateAndTime = \'${date}\'
-    union all
-    select count(*) as CNT from 3pl where DateAndTime = \'${date}\') ad`,
+      `SELECT SUM(CNT) AS totalCount 
+      FROM (SELECT COUNT(*) AS CNT FROM coupangs 
+      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\') 
+      UNION ALL 
+      SELECT COUNT(*) AS CNT FROM 3pl 
+      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')) tmp`,
       {
         type: QueryTypes.SELECT,
       }
@@ -66,9 +74,9 @@ async function checkDailyReservation(req, res) {
 
     if (reservedList.length === 0) {
       return res.status(200).json({
-        ok:true,
-        message: '예약된 목록이 없습니다.'
-      })
+        ok: true,
+        message: '예약된 목록이 없습니다.',
+      });
     }
     res.status(200).json({
       reservedList,
@@ -77,7 +85,7 @@ async function checkDailyReservation(req, res) {
       message: '조회가 완료되었습니다.',
     });
   } catch (error) {
-    console.error(error)
+    console.error(error);
     res.status(400).json({
       ok: false,
       errorMessage: '조회에 실패했습니다.',
@@ -85,7 +93,7 @@ async function checkDailyReservation(req, res) {
   }
 }
 
-async function checkTargetCarRecord(req, res){
+async function checkTargetCarRecord(req, res) {
   try {
     const targetCarNumber = req.query.targetCarNumber;
 
@@ -114,9 +122,9 @@ async function checkTargetCarRecord(req, res){
 
     return res.status(200).json({
       targetRow,
-      ok:true,
-      message: '조회에 성공했습니다.'
-    })
+      ok: true,
+      message: '조회에 성공했습니다.',
+    });
   } catch (error) {
     console.error(error);
     res.status(400).json({
