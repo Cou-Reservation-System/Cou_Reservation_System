@@ -77,7 +77,7 @@ function getDate() {
                   <span> ~ </span>
                   <input name="date" type="text" id="date_select2" class="date_select2" placeholder="2022-04-10">
                 </div>
-                <onclick="searchDate()" button type="button" class="date_wrap_btn" id="date_wrap_btn">조회</button>
+                <button type="button" class="date_wrap_btn" id="date_wrap_btn" onclick="searchDate()">조회</button>
               </div>
             </div>
             <div class="totalCnt" id="totalCnt">
@@ -135,8 +135,8 @@ function getCar() {
           <div id="cars">
             <div id="car_input">
               <input name="car" id="car_select" class="car_select" placeholder="11쿠 1234">
-              <onclick="searchCar()" button type="button" class="car_wrap_btn" id="car_wrap_btn">조회</button>
             </div>
+            <button type="button" class="car_wrap_btn" id="car_wrap_btn" onclick="searchCar()">조회</button>
           </div>
         </div> 
         `
@@ -154,7 +154,7 @@ function searchDate() {
     const endDate = $('.date_select2').val()
     $.ajax({
         type: 'GET',
-        url: `/admin/check/calendar/?startDate=${startDate}&endDate=${endDate}`,
+        url: `/admin/check/calendar/date?startDate=${startDate}&endDate=${endDate}`,
         headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -163,6 +163,8 @@ function searchDate() {
         },
         success: function(response) {
             const reservedList = response.reservedList;
+            console.log(reservedList);
+            console.log('response:', response);
             for (reservation of reservedList) {
                 const date = reservation.DateAndTime.split(' ')[0];
                 const time = reservation.DateAndTime.split(' ')[1];
@@ -192,7 +194,7 @@ function searchDate() {
                 $('#showBox').append(temp_html);
             }
             const totalCnt = document.getElementById('totalCnt');
-            totalCnt.innerText = `해당 날짜의 전체 예약 건수: ${reservedList.toalReservedList}건`
+            totalCnt.innerText = `해당 날짜의 전체 예약 건수: ${response.totalReservedList}건`
 
 
         }
@@ -201,12 +203,11 @@ function searchDate() {
 
 // 차량조회에서 조회버튼 누를 시
 function searchCar() {
-    console.log('tsest')
     const targetCarNumber = $('.car_select').val()
     console.log(targetCarNumber)
     $.ajax({
         type:'GET',
-        url: `/admin/check/?targetCarNumber=${carNum}`,
+        url: `/admin/check?targetCarNumber=${targetCarNumber}`,
         headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -215,6 +216,7 @@ function searchCar() {
         },
         success: function(response) {
             const reservedList = response.reservedList;
+            console.log(reservedList)
             for (reservation of reservedList) {
                 const date = reservation.DateAndTime.split(' ')[0];
                 const time = reservation.DateAndTime.split(' ')[1];
@@ -238,7 +240,7 @@ function searchCar() {
                 $('#showBox').append(temp_html);
             }
             const totalCnt = document.getElementById('totalCnt');
-            totalCnt.innerText = `해당 차량의 전체 예약 건수: ${reservedList.toalReservedList}건`
+            totalCnt.innerText = `해당 차량의 전체 예약 건수: ${response.totalReservedList}건`
 
         }
     })
