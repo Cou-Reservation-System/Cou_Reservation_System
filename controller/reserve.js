@@ -4,20 +4,40 @@ const { QueryTypes } = require('sequelize');
 // 시간 조회
 module.exports.getReserveCount = async (req, res) => {
   try {
-    let dateAndTime = await sequelize.query(
-      `SELECT DateAndTime AS date FROM Coupangs 
+    const { type } = req.params;
+  
+    let dateAndTime =
+      type === 'Coupang'
+        ? await sequelize.query(
+            `SELECT DateAndTime AS date FROM Coupangs 
       GROUP BY DateAndTime 
       HAVING COUNT(*) >= 5`,
-        {
-          type: QueryTypes.SELECT,
-        }
-    );
+            {
+              type: QueryTypes.SELECT,
+            }
+          )
+        : await sequelize.query(
+            `SELECT DateAndTime AS date FROM 3PL 
+      GROUP BY DateAndTime 
+      HAVING COUNT(*) >= 5`,
+            {
+              type: QueryTypes.SELECT,
+            }
+          );
 
-    dateAndTime = dateAndTime.map((dateAndTime)=>{
-      return dateAndTime.date
-    })
-    
-    res.json({ ok: true, message: "해당 시간은 5회가 모두 마감되었습니다.", dateAndTime});
+    if(!dateAndTime.length) {
+      return res.json({ok : false, errorMessage: '시간이 아직 마감되지 않았습니다.'})
+    }
+
+    dateAndTime = dateAndTime.map((dateAndTime) => {
+      return dateAndTime.date;
+    });
+
+    res.json({
+      ok: true,
+      message: '해당 시간은 5회가 모두 마감되었습니다.',
+      dateAndTime,
+    });
   } catch (err) {
     console.error(`${err}에러로 시간 조회에 실패하였습니다.`);
     res
