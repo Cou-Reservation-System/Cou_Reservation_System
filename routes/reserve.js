@@ -11,7 +11,7 @@ const {
 
 router.get('/count/:type', getReserveCount); // 예약 건수 조회
 router.post('/', postReserve); // 예약등록
-router.get('/getReservation', getReserve); // 예약조회
+router.post('/getReservation', getReserve); // 예약조회
 router.put('/edit', putReserve); // 예약수정
 router.delete('/delete', deleteReserve); // 예약삭제
 
