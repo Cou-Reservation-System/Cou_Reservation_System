@@ -19,9 +19,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
 
-    <!-- font -->
-
-
     <link rel="stylesheet" href="./css/login.css" />
 
     <script src="/js/login.js"></script>
@@ -32,17 +29,15 @@
           window.location.replace("/");
         });
       }
-
     </script>
-    
   </head>
 
   <body> 
-    <a href="javascript:window.history.back();">
-        <span class="arrow-prev"></span>
-    </a>
-    <h3 class="title1">로그인</h3>
-    <h5 class="title2">관리자 로그인</h5>
+    <header>
+      <a href="javascript:window.history.back();">
+        <span class="arrow-prev"></span></a>
+        <h3 class="title1">관리자 로그인</h3>
+      </header>
     <div class="mainWrap">
       <div class="inputWrap">
         <div class="id">
@@ -55,7 +50,7 @@
       <div class="btnWrap">
         <button onclick="login()" id="loginBtn" type="button">로그인</button>
         <a href="/findPass" id="findPassBtn" type="button">비밀번호 찾기</a>
-        <a href="#" onclick="join()" id="joinBtn" type="button">회원가입</a>
+        <a href="/join"  id="joinBtn" type="button">회원가입</a>
       </div>
     </div>
 
