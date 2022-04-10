@@ -11,6 +11,14 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      let selectType = 'TPL'
+      $(document).ready(function (){
+        getTime(selectType)
+      })
+    </script>
+
   </head>
   <body>
     <header>
@@ -120,7 +128,7 @@
           <label for="date" class="label"></label>
         </fieldset>
 
-        <button type="submit" class="submitButton" onclick="reserveBtn()">예약등록하기</button>
+        <button type="button" class="submitButton" onclick="reserveBtn()">예약등록하기</button>
       </form>
     </main>
     <script src="./js/regex.js"></script>
@@ -149,7 +157,7 @@
           success: function (response) {
             console.log('예약 완료')
             alert("예약 완료")
-            window.location.href("/admin");
+            window.location.href = "/"
           },
           error: function (error) {
             alert(error.responseJSON.errorMessage);

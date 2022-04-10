@@ -58,6 +58,10 @@ app.get("/3plreserve", (req, res) => {
 app.get('/editDelete', (req, res) => {
   res.render("editDelete")
 })
+// 내정보 조회하기 
+app.get("/checkReservation", (req, res) => {
+  res.render("checkReservation");
+})
 
 ///관리자 로그인
 app.get("/login", (req, res) => {
