@@ -85,11 +85,11 @@ app.get("/findPass", (req, res) => {
 
 const reserveRouter = require("./routes/reserve");
 const adminRouter = require("./routes/admin");
-const reservationCheck = require("./routes/reservationCheck")
+const reservationCheckRouter = require("./routes/reservationCheck")
+const completeCheckRouter = require("./routes/completeCheck")
 
-app.use("/reservation", [reserveRouter]);
-app.use("/admin", [adminRouter, reservationCheck]);
-
+app.use("/reserve", [reserveRouter]);
+app.use("/admin", [adminRouter, reservationCheckRouter, completeCheckRouter]);
 app.listen(port, () => {
     console.log(port, '포트로 서버가 켜졌습니다.');
   });
