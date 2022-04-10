@@ -98,8 +98,7 @@ async function checkTargetCarRecord(req, res) {
     const targetCarNumber = req.query.targetCarNumber;
 
     const targetRow = await sequelize.query(
-      `SELECT *
-        FROM
+      `SELECT * FROM
         (
             SELECT *,'coupangs' AS tableName
             FROM coupangs
@@ -107,7 +106,7 @@ async function checkTargetCarRecord(req, res) {
             SELECT *,'3pl'
             FROM 3pl
         ) truckHouse
-        WHERE truckHouse.carNumber = ${targetCarNumber}`,
+        WHERE truckHouse.carNumber = \'${targetCarNumber}\'`,
       {
         type: QueryTypes.SELECT,
       }
