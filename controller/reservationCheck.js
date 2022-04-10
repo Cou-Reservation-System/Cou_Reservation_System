@@ -71,7 +71,7 @@ async function checkDailyReservation(req, res) {
       }
     );
     const totalReservedList = countReservedList[0].totalCount;
-
+    console.log(reservedList, countReservedList)
     if (reservedList.length === 0) {
       return res.status(200).json({
         ok: true,
