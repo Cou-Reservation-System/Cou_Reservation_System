@@ -6,8 +6,8 @@ function join() {
         data: {
             id: $("#id").val(),
             email: $("#email").val(),
-            pass: $("#pass").val(),
-            passCheck: $("#passCheck").val()
+            password: $("#pass").val(),
+            confirmPassword: $("#passCheck").val()
         },
         success: function (response) {
             alert("회원가입을 축하합니다.");
