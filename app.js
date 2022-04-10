@@ -42,10 +42,6 @@ app.set('view engine', 'ejs');
 //정적파일 사용
 app.use(express.static("./views"));
 
-///admin URL 접속시 main 렌더링
-app.get("/admin", (req, res) => {
-    res.render("main");
-});
 //root URL 접속시 reserve 렌더링
 app.get("/", (req, res) => {
   res.render("choose");
@@ -58,30 +54,27 @@ app.get("/coupangreserve", (req, res) => {
 app.get("/3plreserve", (req, res) => {
   res.render("reserve3pl");
 })
-// 관리자 
-app.get('/adminReserve', (req, res) => {
-    res.render('adminReserve');
-})
 //수정 삭제
 app.get('/editDelete', (req, res) => {
   res.render("editDelete")
 })
 
-///admin URL 접속시 login 렌더링
+///관리자 로그인
 app.get("/login", (req, res) => {
   res.render("login");
 });
-
 //관리자 회원가입
 app.get("/join", (req, res) => {
   res.render("join");
 }); 
-
 //관리자 비밀번호 찾기
 app.get("/findPass", (req, res) => {
   res.render("findPass");
 });
-
+// 관리자 페이지
+app.get('/adminReserve', (req, res) => {
+  res.render('adminReserve');
+})
 
 const reserveRouter = require("./routes/reserve");
 const adminRouter = require("./routes/admin");
