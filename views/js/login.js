@@ -4,8 +4,8 @@
         type: "POST",
         url: "/admin/login",
         data: {
-            id: $("id").val(),
-            password: $("pass").val()
+            id: $("#id").val(),
+            password: $("#pass").val()
         },
         success: function(response) {
             localStorage.setItem("token", response.token);
