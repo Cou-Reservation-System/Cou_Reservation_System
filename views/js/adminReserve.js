@@ -103,7 +103,7 @@ function getCar() {
           </div>
           <div id="cars">
             <div id="car_input">
-              <input name="car" id="car_select" class="car_select" placeholder="차량번호 입력">
+              <input name="car" id="car_select" class="car_select" placeholder="11쿠 1234">
             </div>
             <onclick="searchCar()" button type="button" class="car_wrap_btn" id="car_wrap_btn">조회</button>
           </div>
