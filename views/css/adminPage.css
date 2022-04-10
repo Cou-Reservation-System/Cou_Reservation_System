@@ -2,37 +2,23 @@
 
 html,
 body {
-  /* height: 100%;
-  margin: 0;
-  padding: 0;
-  min-width: 320px;
-  display: flex;
-  flex-direction: column; */
   background-color: rgb(231, 231, 231);
 }
 
 /* 타이틀 */
-.arrow-prev{
-  position: absolute;
-  left: 35px;
-  top: 22px;
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-top: 3px solid rgb(255, 255, 255);
-  border-right: 3px solid rgb(255, 255, 255);
-  transform: rotate(225deg);
+#logout{
+  
 }
 
 .title1{
-  min-width: 320px;
-  padding: 1.2rem 0 1rem;
-  margin: 0;
+  background-color: #3bb2e9;
+  margin: 0% auto 0% auto;
+  border: 1px solid lightgray;
+  width: 100%;
+  padding: 16px;
   text-align: center;
-  background: #3bb2e9;
-  color: #ffffff;
-  height: 4rem;
-  /* font-family: "Pretendard"; */
+  color: white;
+  height: 65px;
 }
 
 .title2{

@@ -34,21 +34,30 @@
   <style></style>
 
   <script>
-
       $(document).ready(function (){
-        getAllData()
+        logoutBtn();
+        getAllData();
       });
+
+      function logoutBtn() {
+        if (localStorage.getItem("token")) {
+          $("#logoutBtn").append(`<button type="button" id="logout" name="logout" onclick="logout()">로그아웃</button>`)
+        }
+      }
+
+      function logout(){
+        localStorage.clear();
+        window.location.replace("/login")
+      };
 
   </script>
 
   <body> <!-- 화면실행 Shift + Alt + B --> 
     <header>
-      <a href="javascript:window.history.back();"
-        ><span class="arrow-prev"></span
-      ></a>
       <h3 class="title1">관리자 페이지</h3>
+      <div id="logoutBtn"></div>
+      
     </header>
-    <h5 class="title2">관리자 페이지</h5>
       <div class="btn_wrap">
         <button onclick="getDate()" class="date_btn" id="date_btn" type="button">날짜 조회</button>
         <button onclick="getCar()" class="car_btn" id="car_btn" type="button">차량 조회</button>
