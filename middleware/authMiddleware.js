@@ -6,8 +6,6 @@ module.exports.authMiddleware = async (req, res, next) => {
     const { authorization } = req.headers;
     const [tokenType, tokenValue] = authorization.split(' ');
 
-    console.log(authorization);
-
     if (tokenType !== 'Bearer') {
       return res.json({
         ok: false,
@@ -15,9 +13,8 @@ module.exports.authMiddleware = async (req, res, next) => {
       });
     }
 
-    const { id } = jwt.verify(tokenValue, process.env.TOKENKEY);
-    console.log(id);
-    const admin = await Admin.findOne({ where: { id } });
+    const { adminId } = jwt.verify(tokenValue, process.env.TOKENKEY);
+    const admin = await Admin.findByPk({ where: { adminId } });
     res.locals.admin = admin;
 
     next();
