@@ -40,7 +40,7 @@
   let adminId;
   $(document).ready(function () {
     if (localStorage.getItem("token")) {
-      getSelf(function (user) {
+      getSelf(function (Admin) {
         adminId = Admin.adminId;
         logoutBtn();
         getAllData();
