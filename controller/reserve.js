@@ -9,18 +9,20 @@ module.exports.getReserveCount = async (req, res) => {
     let dateAndTime =
       type === 'Coupang'
         ? await sequelize.query(
-            `SELECT DateAndTime AS date FROM Coupangs 
-      GROUP BY DateAndTime 
-      HAVING COUNT(*) >= 5`,
+            `SELECT :Date AS date FROM Coupangs 
+      GROUP BY :Date
+      HAVING COUNT(*) >= :count`,
             {
+              replacements: { Date: 'DateAndTime', count: '5' },
               type: QueryTypes.SELECT,
             }
           )
         : await sequelize.query(
-            `SELECT DateAndTime AS date FROM 3PL 
-      GROUP BY DateAndTime 
-      HAVING COUNT(*) >= 5`,
+            `SELECT :Date AS date FROM 3PL 
+      GROUP BY :Date 
+      HAVING COUNT(*) >= :count`,
             {
+              replacements: { Date: 'DateAndTime', count: '5'},
               type: QueryTypes.SELECT,
             }
           );
