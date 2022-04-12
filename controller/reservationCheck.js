@@ -51,27 +51,29 @@ async function checkDailyReservation(req, res) {
     const endDate = req.query.endDate;
     const reservedList = await sequelize.query(
       `SELECT *,\'Coupangs\' AS tableName FROM Coupangs 
-      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')
+      WHERE NOT (DateAndTime < :start OR DateAndTime > :end)
       UNION ALL 
       SELECT *,\'3PL\' FROM 3PL 
-      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')`,
+      WHERE NOT (DateAndTime < :start OR DateAndTime > :end)`,
       {
+        replacements: { start: startDate, end: endDate },
         type: QueryTypes.SELECT,
       }
     );
     const countReservedList = await sequelize.query(
       `SELECT SUM(CNT) AS totalCount 
       FROM (SELECT COUNT(*) AS CNT FROM Coupangs 
-      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\') 
+      WHERE NOT (DateAndTime < :start OR DateAndTime > :end ) 
       UNION ALL 
       SELECT COUNT(*) AS CNT FROM 3PL 
-      WHERE NOT (DateAndTime < \'${startDate}\' OR DateAndTime > \'${endDate}\')) tmp`,
+      WHERE NOT (DateAndTime < :start OR DateAndTime > :end )) tmp`,
       {
+        replacements: { start: startDate, end: endDate },
         type: QueryTypes.SELECT,
       }
     );
     const totalReservedList = countReservedList[0].totalCount;
-    console.log(reservedList, countReservedList)
+    console.log(reservedList, countReservedList);
     if (reservedList.length === 0) {
       return res.status(200).json({
         ok: true,
@@ -106,10 +108,8 @@ async function checkTargetCarRecord(req, res) {
             SELECT *,'3PL'
             FROM 3PL
         ) truckHouse
-        WHERE truckHouse.carNumber = \'${targetCarNumber}\'`,
-      {
-        type: QueryTypes.SELECT,
-      }
+        WHERE truckHouse.carNumber = ?`,
+      { replacements: [targetCarNumber], type: QueryTypes.SELECT }
     );
 
     if (targetRow.length === 0) {

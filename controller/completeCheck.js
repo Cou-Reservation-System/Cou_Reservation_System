@@ -20,8 +20,9 @@ async function ReceivingCheck(req, res) {
             SELECT *,'3PL'
             FROM 3PL
         ) truckHouse
-        WHERE truckHouse.carNumber = ${targetCarNumber}`,
+        WHERE truckHouse.carNumber = ?`,
       {
+        replacements: [targetCarNumber],
         type: QueryTypes.SELECT,
       }
     );
@@ -39,21 +40,17 @@ async function ReceivingCheck(req, res) {
 
     if (targetTableName === 'Coupangs') {
       returnIsDone = await sequelize.query(
-        `update Coupangs
-      set isDone = if(isDone = 0,true,false)
-      where CoupangId = ${targetId}`,
-        {
-          type: QueryTypes.UPDATE,
-        }
+        `UPDATE Coupangs
+      SET isDone = if(isDone = 0,true,false)
+      WHERE CoupangId = ?`,
+        { replacements: [targetId], type: QueryTypes.UPDATE }
       );
     } else if (targetTableName === '3PL') {
       returnIsDone = await sequelize.query(
-        `update 3PL
-        set isDone = if(isDone = 0,true,false)
-        where TPLId = ${targetId}`,
-        {
-          type: QueryTypes.UPDATE,
-        }
+        `UPDATE 3PL
+        SET isDone = if(isDone = 0,true,false)
+        WHERE TPLId = ?`,
+        { replacements: [targetId], type: QueryTypes.UPDATE }
       );
     }
     res.status(200).json({
