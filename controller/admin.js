@@ -79,9 +79,7 @@ module.exports.login = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ adminId: admin.adminId }, process.env.TOKENKEY, {
-      expiresIn: '2h',
-    });
+    const token = jwt.sign({ adminId: admin.adminId }, process.env.TOKENKEY);
 
     res.json({ ok: true, message: '로그인이 완료되었습니다.', token });
   } catch (err) {
