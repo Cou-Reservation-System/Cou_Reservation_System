@@ -79,7 +79,7 @@ module.exports.login = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ adminId: admin.id }, process.env.TOKENKEY, {
+    const token = jwt.sign({ id: admin.id }, process.env.TOKENKEY, {
       expiresIn: '2h',
     });
 
