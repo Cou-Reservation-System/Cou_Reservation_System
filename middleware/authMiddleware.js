@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { Admin } = require('../models');
 
-module.exports.authMiddleware = async (req, res, next) => {
+module.exports.authMiddleware = (req, res, next) => {
   try {
     const { authorization } = req.headers;
-    const [tokenType, tokenValue] = authorization.split(' ');
+    const [tokenType, tokenValue] = (authorization || '').split(' ');
 
-    if (tokenType !== 'Bearer') {
+    if (tokenType !== 'Bearer' || !tokenValue) {
       return res.json({
         ok: false,
         errorMessage: '로그인 후 이용 가능한 기능입니다.',
