@@ -55,7 +55,8 @@ async function checkDailyReservation(req, res) {
       UNION ALL 
       SELECT *,\'3PL\' FROM 3PL 
       WHERE NOT (DateAndTime < :start OR DateAndTime > :end)`,
-      { replacements: {start : startDate, end : endDate},
+      {
+        replacements: { start: startDate, end: endDate },
         type: QueryTypes.SELECT,
       }
     );
@@ -66,12 +67,13 @@ async function checkDailyReservation(req, res) {
       UNION ALL 
       SELECT COUNT(*) AS CNT FROM 3PL 
       WHERE NOT (DateAndTime < :start OR DateAndTime > :end )) tmp`,
-      { replacements: {start : startDate, end : endDate},
+      {
+        replacements: { start: startDate, end: endDate },
         type: QueryTypes.SELECT,
       }
     );
     const totalReservedList = countReservedList[0].totalCount;
-    console.log(reservedList, countReservedList)
+    console.log(reservedList, countReservedList);
     if (reservedList.length === 0) {
       return res.status(200).json({
         ok: true,
@@ -107,9 +109,7 @@ async function checkTargetCarRecord(req, res) {
             FROM 3PL
         ) truckHouse
         WHERE truckHouse.carNumber = ?`,
-      { replacements:  [targetCarNumber],
-        type: QueryTypes.SELECT,
-      }
+      { replacements: [targetCarNumber], type: QueryTypes.SELECT }
     );
 
     if (targetRow.length === 0) {
