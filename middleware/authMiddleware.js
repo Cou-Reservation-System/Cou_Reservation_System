@@ -4,7 +4,7 @@ const { Admin } = require('../models');
 module.exports.authMiddleware = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
-    const [tokenType, tokenValue] = authorization.split(' ');
+    const [tokenType, tokenValue] = (authorization || '').split(' ');
 
     console.log(authorization);
 
