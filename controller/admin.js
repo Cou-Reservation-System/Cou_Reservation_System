@@ -83,8 +83,6 @@ module.exports.login = async (req, res) => {
       expiresIn: '2h',
     });
 
-    console.log("컨트롤러 어드민", token);
-
     res.json({ ok: true, message: '로그인이 완료되었습니다.', token });
   } catch (err) {
     console.error(`${err}로 인해 로그인을 실패하였습니다.`);
@@ -106,7 +104,7 @@ module.exports.auth = async (req, res) => {
 
     res.json({ ok: true, message: '로그인 확인을 성공하였습니다.', adminInfo });
   } catch (err) {
-    console.error(`${err}에러로 로그인 확인을 실패하였습니다.`);
+    console.error(`${err}에러로 controller 로그인 확인을 실패하였습니다.`);
     res
       .status(400)
       .json({ ok: false, errorMessage: '로그인 확인을 실패하였습니다.' });
