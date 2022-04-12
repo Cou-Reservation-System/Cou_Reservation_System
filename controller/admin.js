@@ -83,6 +83,8 @@ module.exports.login = async (req, res) => {
       expiresIn: '2h',
     });
 
+    console.log("컨트롤러 어드민", token);
+
     res.json({ ok: true, message: '로그인이 완료되었습니다.', token });
   } catch (err) {
     console.error(`${err}로 인해 로그인을 실패하였습니다.`);
