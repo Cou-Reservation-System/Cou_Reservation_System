@@ -14,10 +14,10 @@ module.exports.authMiddleware = async (req, res, next) => {
     }
 
     const { adminId } = jwt.verify(tokenValue, process.env.TOKENKEY);
-    const admin = await Admin.findByPk({ where: { adminId } });
-    res.locals.admin = admin;
-
-    next();
+    Admin.findByPk(adminId).then((admin) => {
+      res.locals.admin = admin;
+      next();
+    })
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
       return res.json({
