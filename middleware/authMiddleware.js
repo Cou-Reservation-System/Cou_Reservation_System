@@ -15,9 +15,9 @@ module.exports.authMiddleware = async (req, res, next) => {
       });
     }
 
-    const { adminId } = jwt.verify(tokenValue, process.env.TOKENKEY);
-    console.log(adminId);
-    const admin = await Admin.findOne({ where: { id : adminId } });
+    const { id } = jwt.verify(tokenValue, process.env.TOKENKEY);
+    console.log(id);
+    const admin = await Admin.findOne({ where: { id } });
     res.locals.admin = admin;
 
     next();
