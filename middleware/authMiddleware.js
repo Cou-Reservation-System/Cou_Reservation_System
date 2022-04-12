@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { Admin } = require('../models');
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
   try {
     const { authorization } = req.headers;
     const [tokenType, tokenValue] = authorization.split(' ');
@@ -14,11 +14,11 @@ module.exports = async (req, res, next) => {
     }
 
     const {adminId} = jwt.verify(tokenValue, process.env.TOKENKEY);
-
-    const admin = await Admin.findOne({ where: { adminId } });
-    res.locals.admin = admin;
-
-    next();
+    Admin.findOne({ where: { adminId } }).then(()=> {
+      res.locals.adminId = adminId;
+      next();
+    })
+   
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
       return res.json({

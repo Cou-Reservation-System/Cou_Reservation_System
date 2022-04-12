@@ -93,14 +93,9 @@ module.exports.login = async (req, res) => {
 // 로그인 확인
 module.exports.auth = async (req, res) => {
   try {
-    const admin = res.locals.admin;
-    const adminInfo = {
-      adminId: admin.adminId,
-      id: admin.id,
-      email: admin.email,
-    };
+    const adminId = res.locals.adminId;
 
-    res.json({ ok: true, message: '로그인 확인을 성공하였습니다.', adminInfo });
+    res.json({ ok: true, message: '로그인 확인을 성공하였습니다.', adminId });
   } catch (err) {
     console.error(`${err}에러로 controller 로그인 확인을 실패하였습니다.`);
     res
