@@ -79,7 +79,9 @@ module.exports.login = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ adminId: admin.adminId }, process.env.TOKENKEY);
+    const token = jwt.sign({ adminId: admin.adminId }, process.env.TOKENKEY, {
+      expiresIn: '2h',
+    });
 
     res.json({ ok: true, message: '로그인이 완료되었습니다.', token });
   } catch (err) {
@@ -142,7 +144,7 @@ module.exports.resetPassword = async (req, res) => {
     // 원래있던 비밀번호
     const admin = await Admin.findOne({ where: { id } });
     const originHashPassword = admin.password;
-    const originSalt = admin.salt; 
+    const originSalt = admin.salt;
 
     // 새로 저장할 비밀번호
     const newSalt = crypto.randomBytes(64).toString('base64');
