@@ -15,6 +15,7 @@ module.exports.authMiddleware = (req, res, next) => {
 
     const { adminId } = jwt.verify(tokenValue, process.env.TOKENKEY);
     Admin.findByPk(adminId).then((admin) => {
+      console.log("pkadmin", admin);
       res.locals.admin = admin;
       next();
     })
