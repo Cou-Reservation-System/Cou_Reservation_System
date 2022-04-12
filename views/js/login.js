@@ -26,7 +26,7 @@ function getSelf(callback) {
         "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       success: function (response) {
-        callback(response.user);
+        callback(response.adminId);
       },
       error: function (xhr, status, error) {
         console.log(xhr,status,error)
